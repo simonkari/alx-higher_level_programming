@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 def uppercase(s):
     uppercase_s = ""
     for c in s:
