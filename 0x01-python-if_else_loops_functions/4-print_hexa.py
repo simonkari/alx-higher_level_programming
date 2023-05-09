@@ -1,3 +1,4 @@
 #!/usr/bin/python3
-for sk in range(99):
-print("{} = {}".format(sk, hex(sk)))
+
+for i in range(99):
+    print("{} = {}".format(i, hex(i)))
