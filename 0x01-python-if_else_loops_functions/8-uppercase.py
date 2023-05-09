@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-
 def uppercase(str):
     temp = ""
     for sk in range(len(str)):
@@ -7,5 +6,4 @@ def uppercase(str):
             temp += chr(ord(str[sk]) - 32)
             continue
         temp += str[sk]
-
     print('{}'.format(temp))
