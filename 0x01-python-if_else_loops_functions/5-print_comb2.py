@@ -4,4 +4,3 @@ for sk in range(0, 100):
         print("{}".format(sk))
     else:
         print("{:02}".format(sk), end=", ")
-  
