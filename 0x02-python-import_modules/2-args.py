@@ -1,0 +1,23 @@
+#!/usr/bin/python3
+
+import sys
+
+num_args = len(sys.argv) - 1
+
+if __name__ == "__main__":
+
+    # number of arguments
+    if num_args == 1:
+        print("Number of argument: ", end="")
+    else:
+        print("Number of arguments: ", end="")
+    print(num_args, end="")
+
+    # list of arguments
+    if num_args == 0:
+        print(".")
+    else:
+        print(":")
+        for i in range(num_args):
+            print(i+1, ":", sys.argv[i+1])
+    exit()
