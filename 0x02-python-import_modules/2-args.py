@@ -15,7 +15,7 @@ if __name__ == "__main__":
 
     # list of arguments
     if num_args == 0:
-        print(".")
+        print("0 arguments.")
     else:
         print(":")
         for i in range(num_args):
