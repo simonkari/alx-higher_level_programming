@@ -17,7 +17,7 @@ if __name__ == "__main__":
     if num_args == 0:
         print("0 arguments.")
     else:
-        print(":")
+        print(f"{total} argument{'s' if total > 1 else ''}:")
         for i in range(num_args):
             print(i+1, ":", sys.argv[i+1])
     exit()
