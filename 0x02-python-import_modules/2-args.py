@@ -2,7 +2,7 @@
 
 import sys
 
-total = len(args)
+num_args = len(args)
 args = sys.argv[1:]
 
 if __name__ == "__main__":
