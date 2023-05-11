@@ -4,7 +4,7 @@ import sys
 from calculator_1 import add, sub, mul, div
 
 
-if len(sys.argv) != 4:
+if len(sys.argv) != :
     print("Usage: {} <a> <operator> <b>".format(sys.argv[0]))
     sys.exit(1)
 
@@ -25,3 +25,4 @@ else:
     sys.exit(1)
 
 print("{} {} {} = {}".format(a, operator, b, result))
+exit()
