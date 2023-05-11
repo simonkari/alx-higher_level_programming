@@ -3,7 +3,7 @@
 import sys
 
 num_args = len(args)
-args = sys.argv[1:]
+args = sys.argv[i+1:]
 
 if __name__ == "__main__":
     if num_args == 0:
