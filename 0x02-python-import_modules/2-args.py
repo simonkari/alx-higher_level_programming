@@ -1,10 +1,12 @@
 #!/usr/bin/python3
+
 import sys
+
 args = sys.argv[1:]
 num_args = len(args)
 
 if __name__ == "__main__":
-    if total == 0:
+    if num_args == 0:
         print("0 arguments.")
         exit()
     else:
