@@ -8,9 +8,9 @@ if __name__ == "__main__":
 
     # number of arguments
     if num_args == 1:
-        print("Number of argument: ", end="")
+        print("argument: ", end="")
     else:
-        print("Number of arguments: ", end="")
+        print("arguments: ", end="")
     print(num_args, end="")
 
     # list of arguments
