@@ -6,13 +6,6 @@ total = len(args)
 args = sys.argv[1:]
 
 if __name__ == "__main__":
-
-    if num_args == 1:
-        print("argument: ", end="")
-    else:
-        print("arguments: ", end="")
-    print(num_args, end="")
-
     if num_args == 0:
         print("0 arguments.")
     else:
