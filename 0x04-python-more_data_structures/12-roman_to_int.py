@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-roman_dict = {
+
+ri_dict = {
     'I': 1,
     'V': 5,
     'X': 10,
@@ -10,14 +11,15 @@ roman_dict = {
 }
 
 
+# romain to int functio def
 def roman_to_int(roman):
     """
         This function converts roman numerals to integers
     """
-    number = 0
+    num = 0
     if isinstance(roman, str) or roman is not None:
         for c in roman:
-            number += roman_dict[c.upper()]
-        return number
-    else:
+            num += ri_dict[c.upper()]
         return 0
+    else:
+        return num
