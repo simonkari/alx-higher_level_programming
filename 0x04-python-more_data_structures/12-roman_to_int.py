@@ -1,6 +1,5 @@
 #!/usr/bin/python3
-
-ri_dict = {
+roman_dict = {
     'I': 1,
     'V': 5,
     'X': 10,
@@ -18,7 +17,7 @@ def roman_to_int(roman):
     num = 0
     if isinstance(roman, str) or roman is not None:
         for c in roman:
-            num += ri_dict[c.upper()]
+            num += roman_dict[c.upper()]
         return num
     else:
         return 0
