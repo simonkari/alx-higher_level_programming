@@ -1,8 +1,16 @@
 #!/usr/bin/python3
 def best_score(a_dictionary):
-    max_score = None
-    max_key = None
-    Big = max(list(dict(a_dictionary).values()))
-    for max_key in a_dictionary:
-        if a_dictionary[max_key] == Big:
-            return max_key
+
+    if not isinstance(a_dictionary, dict) or len(a_dictionary) == 0:
+        return None
+
+    sk = list(a_dictionary.keys())[0]
+
+    big = a_dictionary[sk]
+    for key, value in a_dictionary.items():
+
+        if value > big:
+            big = value
+            sk = key
+
+    return (sk)
