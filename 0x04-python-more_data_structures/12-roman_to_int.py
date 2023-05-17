@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-
 ri_dict = {
     'I': 1,
     'V': 5,
@@ -11,7 +10,6 @@ ri_dict = {
 }
 
 
-# romain to int functio def
 def roman_to_int(roman):
     """
         This function converts roman numerals to integers
