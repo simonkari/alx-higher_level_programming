@@ -23,7 +23,7 @@ def roman_to_int(roman_string):
 
         if (x != (len(roman_string) - 1) and
                 ri_dict[roman_string[x]] < ri_dict[roman_string[x + 1]]):
-                num += ri_dict[roman_string[x]] * -1
+            num += ri_dict[roman_string[x]] * -1
 
         else:
             num += ri_dict[roman_string[x]]
