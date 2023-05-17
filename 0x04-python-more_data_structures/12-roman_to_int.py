@@ -8,14 +8,16 @@ roman_dict = {
     'D': 500,
     'M': 1000
 }
-def roman_to_int(roman_string):
+
+
+def roman_to_int(roman):
+    """
+        This function converts roman numerals to integers
+    """
     number = 0
-
-    if isinstance(roman_string, str) or roman_string is not None:
-
-        for c in roman_string:
+    if isinstance(roman, str) or roman is not None:
+        for c in roman:
             number += roman_dict[c.upper()]
         return number
-
     else:
         return 0
