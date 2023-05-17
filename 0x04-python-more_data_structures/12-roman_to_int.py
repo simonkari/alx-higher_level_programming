@@ -16,8 +16,8 @@ def roman_to_int(roman):
     """
     number = 0
     if isinstance(roman, str) or roman is not None:
-        for c in roman:
-            number += roman_dict[c.upper()]
+        for sk in roman:
+            number += roman_dict[sk.upper()]
         return number
     else:
         return 0
