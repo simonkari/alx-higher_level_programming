@@ -7,7 +7,3 @@ def raise_exception():
     raise NameError("Error Occured")
     raise SyntaxError("Error Occured")
     raise IndentationError("Error Occured")
-
-
-raise_exception()
-print()
