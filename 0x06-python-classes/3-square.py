@@ -7,11 +7,12 @@ class Square:
     class square that has attributes:
         size
     some attributes are protected from input.
+    Public instance method: def area(self).
     """
 
     def __init__(self, size=0):
         """
-        initialization of data
+        initialization of data structure
         """
 
         if type(size) != int:
