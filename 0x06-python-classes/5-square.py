@@ -10,10 +10,12 @@ class Square:
         size
     some attributes are protected from input.
     """
+
     def __init__(self, size=0):
         """
         initialization data structure
         """
+
         if self.__validate_size(size):
             self.__size = size
 
@@ -22,6 +24,7 @@ class Square:
         """
         fetch for the size property
         """
+
         return self.__size
 
     @size.setter
@@ -29,6 +32,7 @@ class Square:
         """
         set the size property
         """
+
         if self.__validate_size(value):
             self.__size = value
 
@@ -36,12 +40,14 @@ class Square:
         """
         return area of square
         """
+
         return self.__size ** 2
 
     def my_print(self):
         """
         Prints to stdout the square with the character #
         """
+
         i = 0
         for i in range(0, self.__size):
             j = 0
@@ -53,10 +59,14 @@ class Square:
         """
         validates size, check errors
         """
+
         if type(size) != int:
             raise TypeError("size must be an integer")
+
         elif size < 0:
             raise ValueError("size must be >= 0")
+
         else:
             return True
+
         return False
