@@ -11,7 +11,7 @@ class Square:
 
     def __init__(self, size=0):
         """
-        initialization function
+        initialization of data structure
         """
 
         if type(size) != int:
