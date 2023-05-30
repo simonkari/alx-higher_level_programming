@@ -4,10 +4,11 @@
 
 class Square:
     """Represents a square.
-    Private instance attribute: size.
-    Instantiation with size (no type/value verification).
+    class square that has attribute: size.
+    creation with size (no type/value verification).
     """
 
     def __init__(self, size):
-        """Initializes the data."""
+        """Initialization of data."""
+
         self.__size = size
