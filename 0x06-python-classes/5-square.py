@@ -46,7 +46,7 @@ class Square:
 
     def my_print(self):
         """
-        prints the square using '#' characters
+        prints the square '#' characters
         """
 
         i = 0
