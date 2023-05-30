@@ -12,7 +12,7 @@ class Square:
     """
     def __init__(self, size=0):
         """
-        initialization function for our square clasee
+        initialization data structure
         """
         if self.__validate_size(size):
             self.__size = size
@@ -20,27 +20,27 @@ class Square:
     @property
     def size(self):
         """
-        getter for the size property
+        fetch for the size property
         """
         return self.__size
 
     @size.setter
     def size(self, value):
         """
-        setter for the size property
+        set the size property
         """
         if self.__validate_size(value):
             self.__size = value
 
     def area(self):
         """
-        calculates the area of the square
+        return area of square
         """
         return self.__size ** 2
 
     def my_print(self):
         """
-        prints the square using '#' characters
+        Prints to stdout the square with the character #
         """
         i = 0
         for i in range(0, self.__size):
@@ -51,7 +51,7 @@ class Square:
 
     def __validate_size(self, size):
         """
-        validates the size, checking for errors
+        validates size, check errors
         """
         if type(size) != int:
             raise TypeError("size must be an integer")
