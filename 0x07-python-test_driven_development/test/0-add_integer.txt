@@ -1,0 +1,23 @@
+The "0-add_integer" module is a module that contains only one function called "add_integer".
+This function is designed to calculate the sum of two integers.
+
+To use the "add_integer" function, you need to first import it from the "0-add_integer" module.
+Since the file name contains a numeral, a different syntax is used: add_integer = __import__('0-add_integer').add_integer.
+
+Once imported, you can use the "add_integer" function by providing two integer arguments.
+For example, add_integer(1, 2) returns the sum of 1 and 2, which is 3.
+
+The "add_integer" function can also handle floating-point values, but they will be converted to integers by rounding down.
+For instance, add_integer(3.456, 4) would convert 3.456 to 3 and return the sum of 3 and 4, which is 7.
+
+It's important to note that if either of the arguments is not an integer or a float, the function will raise a TypeError exception.
+For example, add_integer('5') would raise a TypeError with the message "a must be an integer".
+
+There are also some limitations when dealing with very large or special floating-point values.
+Trying to use infinity (positive or negative) or NaN (not a number) as arguments will result in an OverflowError or ValueError, respectively.
+
+Lastly, it's worth mentioning that the "add_integer" function requires one or two arguments.
+Providing no arguments or more than two arguments will raise a TypeError exception with an appropriate message indicating the issue.
+
+Overall, the "0-add_integer" module provides the "add_integer" function for calculating the sum of integers,
+with support for some floating-point values and appropriate exception handling for invalid arguments.
