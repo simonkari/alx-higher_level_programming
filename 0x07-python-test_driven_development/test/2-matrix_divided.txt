@@ -1,0 +1,25 @@
+First, you need to import the "matrix_divided" function from the "2-matrix_divided" module. Since the file name contains a numeral, a different
+syntax is used: matrix_divided = __import__('2-matrix_divided').matrix_divided.
+
+Once imported, you can use the "matrix_divided" function to divide all the elements of a matrix by an integer or float. 
+The resulting quotients are rounded to the nearest second decimal place.
+
+For example, if you have the matrix [[1, 2, 3], [4, 5, 6]] and you want to divide each element by 3, you can call matrix_divided(matrix, 3).
+The function will return a new matrix where each element is divided by 3 and rounded to the nearest second decimal place.
+In this case, the result would be [[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]].
+
+The "matrix_divided" function can handle both integer and floating-point values as inputs.
+However, the resulting quotients will always be rounded to two decimal places, even if the inputs are floating-point numbers.
+The "matrix_divided" function performs various checks and raises specific exceptions for certain conditions.
+
+The matrix argument should be a list comprised of lists, where the inner lists contain integer or float values.
+If the matrix argument is not in this format, a TypeError is raised with the message
+"matrix must be a matrix (list of lists) of integers/floats". An empty list as matrix will simply produce an empty list as output.
+
+The inner lists in the matrix argument should all have the same length.
+If any of the inner lists have a different length, a TypeError is raised with the message
+"Each row of the matrix must have the same size".
+
+The div argument should be an integer or float. If it is not, a TypeError is raised with the message
+"div must be a number". Additionally, if the div argument is zero, a ZeroDivisionError
+is raised with the message "division by zero".
