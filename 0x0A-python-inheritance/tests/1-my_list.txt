@@ -1,6 +1,6 @@
 The ``1-my_list`` module
 ============================
-This module contains a custom subclass of int , and only one method: print_sorted.
+module contains a custom subclass of int , and only one method: print_sorted.
 
 Using ``print_sorted``
 ---------------------
@@ -79,8 +79,10 @@ No exceptions arise for these use cases, although there is no practical reason t
     >>> my_list.print_sorted()
     [1, 2.6, 4.2, 5, 7.3]
 
-    - float positive infinity
+  
+  - float positive infinity
 
+  
     >>> my_list = MyList()
     >>> pos_inf = float('inf')
     >>> my_list.append(pos_inf)
@@ -91,10 +93,13 @@ No exceptions arise for these use cases, although there is no practical reason t
     >>> print(my_list)
     [inf, 4, 2, 7, 5]
 
+
     >>> my_list.print_sorted()
     [2, 4, 5, 7, inf]
 
+
     - float negative infinity
+
 
     >>> my_list = MyList()
     >>> neg_inf = float('-inf')
@@ -106,10 +111,13 @@ No exceptions arise for these use cases, although there is no practical reason t
     >>> print(my_list)
     [-inf, 4, 2, 7, 5]
 
+
     >>> my_list.print_sorted()
     [-inf, 2, 4, 5, 7]
 
+ 
     - float "not a number"
+
 
     >>> my_list = MyList()
     >>> not_a_num = float('nan')
@@ -130,6 +138,7 @@ No custom exceptions built in. Standard TypeErrors shown for argument count and 
 
     - more than 0 args:
 
+
     >>> my_list.print_sorted(1)
     Traceback (most recent call last):
         ...
@@ -142,6 +151,7 @@ No custom exceptions built in. Standard TypeErrors shown for argument count and 
 
     - None in list:
 
+
     >>> my_list = MyList()
     >>> my_list.append(None)
     >>> my_list.append(4)
@@ -151,12 +161,15 @@ No custom exceptions built in. Standard TypeErrors shown for argument count and 
     >>> print(my_list)
     [None, 4, 2, 7, 5]
 
+
     >>> my_list.print_sorted()
     Traceback (most recent call last):
         ...
     TypeError: unorderable types: int() < NoneType()
 
+
     - string in list:
+
 
     >>> my_list = MyList()
     >>> my_list.append('1')
@@ -167,12 +180,15 @@ No custom exceptions built in. Standard TypeErrors shown for argument count and 
     >>> print(my_list)
     ['1', 4, 2, 7, 5]
 
+
     >>> my_list.print_sorted()
     Traceback (most recent call last):
         ...
     TypeError: unorderable types: int() < str()
 
+
     - list in list:
+
 
     >>> my_list = MyList()
     >>> my_list.append([1, 3])
@@ -183,12 +199,15 @@ No custom exceptions built in. Standard TypeErrors shown for argument count and 
     >>> print(my_list)
     [[1, 3], 4, 2, 7, 5]
 
+
     >>> my_list.print_sorted()
     Traceback (most recent call last):
         ...
     TypeError: unorderable types: int() < list()
 
+
     - tuple in list:
+
 
     >>> my_list = MyList()
     >>> my_list.append((1, 3))
@@ -198,6 +217,7 @@ No custom exceptions built in. Standard TypeErrors shown for argument count and 
     >>> my_list.append(5)
     >>> print(my_list)
     [(1, 3), 4, 2, 7, 5]
+
 
     >>> my_list.print_sorted()
     Traceback (most recent call last):
