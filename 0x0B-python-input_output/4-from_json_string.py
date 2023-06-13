@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 
-"""task 6 defines a JSON-to-object function"""
+"""task 4 defines a JSON-to-object function"""
 
 
 def from_json_string(my_str):
