@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 
-"""task 5 defines a string-to-JSON function """
+"""task 3 defines a string-to-JSON function """
 
 
 def to_json_string(my_obj):
