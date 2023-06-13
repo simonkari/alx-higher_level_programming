@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 
-"""task 8 JSON file-reading function"""
+"""task 6 JSON file-reading function"""
 
 
 def load_from_json_file(filename):
