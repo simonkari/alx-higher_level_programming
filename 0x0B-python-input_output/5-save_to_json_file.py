@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 
-"""task 7 JSON file-writing function"""
+"""task 5 JSON file-writing function"""
 
 
 def save_to_json_file(my_obj, filename):
