@@ -2,7 +2,7 @@
 
 
 """
-task 10. Class to JSON, Returns the dictionary description with
+task 8. Class to JSON, Returns the dictionary description with
 simple data structure
 """
 
