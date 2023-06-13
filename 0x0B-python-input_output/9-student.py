@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 
-"""task 11. Student to JSON, defines a class Student"""
+"""task 9. Student to JSON, defines a class Student"""
 
 
 class Student:
