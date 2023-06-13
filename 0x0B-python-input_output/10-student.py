@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-task 12 defines a class student
+task 10 defines a class student
 """
 
 
