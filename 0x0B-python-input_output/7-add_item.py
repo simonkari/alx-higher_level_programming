@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 
-"""task 9 writes an Object to a text file,
+"""task 7 writes an Object to a text file,
 using a JSON representation"""
 
 
