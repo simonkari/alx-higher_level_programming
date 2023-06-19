@@ -64,6 +64,7 @@ class Square(Rectangle):
 
     @size.setter
     def size(self, value):
+
         """`size` setter, but in this case `size` acts as alias for
         `width`/`height`.
 
@@ -75,10 +76,12 @@ class Square(Rectangle):
                 validation from super().width
 
         """
+
         self.width = value
         self.height = value
 
     def update(self, *args, **kwargs):
+
         """Updates superclass attributes in a given order based on variable
         amount of non-keyword args, or in any order with keyword args.
 
@@ -106,6 +109,7 @@ class Square(Rectangle):
                 any order. if *args not empty, **kwargs skipped
 
         """
+
         if len(args) == 0:
             if len(kwargs) == 0 or len(kwargs) > 4:
                 raise TypeError('Square.update() takes 1 to 4 keyword,' +
