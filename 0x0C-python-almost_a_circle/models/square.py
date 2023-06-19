@@ -31,6 +31,7 @@ class Square(Rectangle):
         super().__init__(size, size, x, y, id)
 
     def __str__(self):
+
         """Returns string with numeric representation of square
 
         Returns:
@@ -40,11 +41,13 @@ class Square(Rectangle):
             10. And now, the Square! - class Square `__init__`, `__str__`,
                 only inherited validation, no new attributes
         """
+
         return ('[Square] ({:d}) {:d}/'.format(self.id, self.x) +
                 '{:d} - {:d}'.format(self.y, self.width))
 
     @property
     def size(self):
+
         """`size` getter, but in this case `size` acts as alias for
         `width`/`height`.
 
@@ -56,6 +59,7 @@ class Square(Rectangle):
                 validation from super().width
 
         """
+
         return self.width
 
     @size.setter
