@@ -1,12 +1,10 @@
 #!/usr/bin/python3
-
 """0x0C. Python - Almost a circle, task 1, 15-20"""
 import json
 import csv
 
 
 class Base:
-
     """Assigns `id` and manages related attributes across all instances.
 
     Assigns valid id from arg, or without an arg the current count of
@@ -51,7 +49,6 @@ class Base:
 
     @property
     def id(self):
-
         """Getter for `id`
 
         Returns:
@@ -62,7 +59,6 @@ class Base:
 
     @id.setter
     def id(self, value):
-
         """Args:
             value (int): number to be assigned as id
 
@@ -79,7 +75,6 @@ class Base:
 
     @property
     def serial(self):
-
         """Getter for `serial`
 
         Returns:
@@ -91,7 +86,6 @@ class Base:
 
     @serial.setter
     def serial(self, value):
-
         """Args:
             value (int): the number to be assigned as `serial`
 
@@ -103,7 +97,6 @@ class Base:
 
     @staticmethod
     def to_json_string(list_dictionaries):
-
         """Converts the list of dictionaries into JSON string.
 
         Args:
@@ -126,7 +119,6 @@ class Base:
 
     @classmethod
     def save_to_file(cls, list_objs):
-
         """Saves to file a JSON formatted string of a list of dictionary
         representations of objects of `Base` derived classes.
 
@@ -155,7 +147,6 @@ class Base:
 
     @staticmethod
     def from_json_string(json_string):
-
         """Returns list of objects represented by JSON format string,
         or [] if `json_string` is None or empty
 
@@ -179,7 +170,6 @@ class Base:
 
     @classmethod
     def create(cls, **dictionary):
-
         """Creates a new dummy instance of class and `update()`s it using
         `dictionary` as keyword args
 
@@ -201,7 +191,6 @@ class Base:
 
     @classmethod
     def load_from_file(cls):
-
         """Returns list of instances from file <class name>.json, or empty list
         if no file. `cls` determines class of instances.
 
@@ -232,7 +221,6 @@ class Base:
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
-
         """Saves to file a CSV formatted string of a list of dictionary
         representations of objects of `Base` derived classes.
 
@@ -268,7 +256,6 @@ class Base:
 
     @classmethod
     def load_from_file_csv(cls):
-
         """Returns list of instances from file <class name>.csv, or empty list
         if no file. `cls` determines class of instances.
 
