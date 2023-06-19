@@ -2,11 +2,13 @@
 
 
 """0x0C. Python - Almost a circle, task 1, 15-20"""
+
 import json
 import csv
 
 
 class Base:
+
     """Assigns `id` and manages related attributes across all instances.
 
     Assigns valid id from arg, or without an arg the current count of
@@ -30,6 +32,7 @@ class Base:
         1. Base class - /models, __init__.py, class Base, __init__
 
     """
+
     __nb_objects = 0
     __true_nb_objects = 0
     __assigned_ids = set()
