@@ -1,9 +1,13 @@
 #!/usr/bin/python3
+
+
 """0x0C. Python - Almost a circle, task 2 - 13"""
+
 from models.base import Base
 
 
 class Rectangle(Base):
+
     """Creates rectangle objects with 2 dimensions and offset coordinates.
 
     Uses superclass `__init__` to create valid instance id, and sets
@@ -21,6 +25,7 @@ class Rectangle(Base):
             `height`, `x`, `y`
 
     """
+
     def __init__(self, width, height, x=0, y=0, id=None):
         super().__init__(id)
         # attribute assigment here engages setters defined below
