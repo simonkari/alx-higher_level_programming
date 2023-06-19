@@ -1,10 +1,14 @@
 #!/usr/bin/python3
+
+
 """0x0C. Python - Almost a circle, task 1, 15-20"""
+
 import json
 import csv
 
 
 class Base:
+
     """Assigns `id` and manages related attributes across all instances.
 
     Assigns valid id from arg, or without an arg the current count of
@@ -28,6 +32,7 @@ class Base:
         1. Base class - /models, __init__.py, class Base, __init__
 
     """
+
     __nb_objects = 0
     __true_nb_objects = 0
     __assigned_ids = set()
@@ -36,33 +41,32 @@ class Base:
 
     def __init__(self, id=None):
         if id is not None:
-            # init with custom id, or reassignment from update()
             self.id = id
-            # true total up and serial set only after id validated
             Base.__true_nb_objects += 1
             self.serial = Base.__true_nb_objects
             Base.__assigned_ids.add(self.id)
         else:
-            # per project instructions, __nb_objects up only with no id arg
             Base.__nb_objects += 1
             self.id = Base.__nb_objects
-            # update true total, serial and assigned id set
             Base.__true_nb_objects += 1
             self.serial = Base.__true_nb_objects
             Base.__assigned_ids.add(self.id)
 
     @property
     def id(self):
+
         """Getter for `id`
 
         Returns:
             __id (int): unique identifer for each instance of cls
 
         """
+
         return self.__id
 
     @id.setter
     def id(self, value):
+
         """Args:
             value (int): number to be assigned as id
 
@@ -73,12 +77,14 @@ class Base:
             ValueError: if `id` arg is 0, negative, or already assigned.
 
         """
+
         if value < 1:
             raise ValueError('id must be positive')
         self.__id = value
 
     @property
     def serial(self):
+
         """Getter for `serial`
 
         Returns:
@@ -86,10 +92,12 @@ class Base:
                 from __true_nb_objects at time of instantiation
 
         """
+
         return self.__serial
 
     @serial.setter
     def serial(self, value):
+
         """Args:
             value (int): number to be assigned as `serial`
 
@@ -97,10 +105,12 @@ class Base:
             __serial (int): unique identifer for each instance of cls, taken
                 from __true_nb_objects at time of instantiation
         """
+
         self.__serial = value
 
     @staticmethod
     def to_json_string(list_dictionaries):
+
         """Converts list of dictionaries into JSON string.
 
         Args:
@@ -116,6 +126,7 @@ class Base:
                  list_dictionaries, or [] if None
 
         """
+
         if list_dictionaries is None or list_dictionaries == []:
             return '[]'
         else:
@@ -123,6 +134,7 @@ class Base:
 
     @classmethod
     def save_to_file(cls, list_objs):
+
         """Saves to file a JSON formatted string of a list of dictionary
         representations of objects of `Base` derived classes.
 
@@ -137,6 +149,7 @@ class Base:
                 filename, if list None then list = []
 
         """
+
         if list_objs is None:
             list_objs = []
 
@@ -151,6 +164,7 @@ class Base:
 
     @staticmethod
     def from_json_string(json_string):
+
         """Returns list of objects represented by JSON format string,
         or [] if `json_string` is None or empty
 
@@ -168,12 +182,14 @@ class Base:
                 or if None or empty, return an empty list
 
         """
+
         if json_string is None or json_string == '':
             return []
         return json.loads(json_string)
 
     @classmethod
     def create(cls, **dictionary):
+
         """Creates a new dummy instance of class and `update()`s it using
         `dictionary` as keyword args
 
@@ -186,6 +202,7 @@ class Base:
                 `dictionary` as keyword args
 
         """
+
         if cls.__name__ is 'Rectangle':
             temp = cls(1, 1)
         elif cls.__name__ is 'Square':
@@ -195,6 +212,7 @@ class Base:
 
     @classmethod
     def load_from_file(cls):
+
         """Returns list of instances from file <class name>.json, or empty list
         if no file. `cls` determines class of instances.
 
@@ -209,6 +227,7 @@ class Base:
                 class of instances in list depends on cls
 
         """
+
         import os.path
 
         filename = cls.__name__ + '.json'
@@ -225,6 +244,7 @@ class Base:
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
+
         """Saves to file a CSV formatted string of a list of dictionary
         representations of objects of `Base` derived classes.
 
@@ -239,6 +259,7 @@ class Base:
                 class of instances in list depends on cls
 
         """
+
         if list_objs is None:
             list_objs = []
 
@@ -260,7 +281,8 @@ class Base:
 
     @classmethod
     def load_from_file_csv(cls):
-        """Returns list of instances from file <class name>.csv, or empty list
+
+        """Returns list of the instances from file <class name>.csv, or empty list
         if no file. `cls` determines class of instances.
 
         Returns:
@@ -274,6 +296,7 @@ class Base:
                 class of instances in list depends on cls
 
         """
+
         import os.path
 
         if cls.__name__ == 'Rectangle':

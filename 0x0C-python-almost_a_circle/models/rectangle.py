@@ -1,10 +1,17 @@
 #!/usr/bin/python3
-"""0x0C. Python - Almost a circle, task 2 - 13"""
+
+
+"""
+0x0C. Python - Almost a circle, task 2 - 13
+"""
+
 from models.base import Base
 
 
 class Rectangle(Base):
-    """Creates rectangle objects with 2 dimensions and offset coordinates.
+
+    """
+    Creates rectangle objects with 2 dimensions and offset coordinates.
 
     Uses superclass `__init__` to create valid instance id, and sets
     self vars from args.
@@ -21,16 +28,18 @@ class Rectangle(Base):
             `height`, `x`, `y`
 
     """
+
     def __init__(self, width, height, x=0, y=0, id=None):
         super().__init__(id)
-        # attribute assigment here engages setters defined below
         self.width = width
         self.height = height
         self.x = x
         self.y = y
 
     def __integer_validator(self, attr, value):
-        """Validates incoming argument values for use with internal attributes.
+
+        """
+        Validates incoming argument values for use with internal attributes.
 
         Args:
             attr (str): name of intended attribute assignment
@@ -46,6 +55,7 @@ class Rectangle(Base):
                 `x`, `y`
 
         """
+
         if type(value) is not int:
             raise TypeError('{} must be an integer'.format(attr))
         if attr is 'width' or attr is 'height':
@@ -57,93 +67,117 @@ class Rectangle(Base):
 
     @property
     def width(self):
-        """`__width` getter
+
+        """
+        `__width` getter
 
         Returns:
             __width (int): x dimension of rectangle
 
         """
+
         return self.__width
 
     @width.setter
     def width(self, value):
-        """Args:
+
+        """
+        Args:
             value (int): x dimension of rectangle
 
         Attributes:
             __width (int): x dimension of rectangle
 
         """
+
         self.__integer_validator('width', value)
         self.__width = value
 
     @property
     def height(self):
-        """`__height` getter
+
+        """
+        `__height` getter
 
         Returns:
             __height (int): y dimension of rectangle
 
         """
+
         return self.__height
 
     @height.setter
     def height(self, value):
-        """Args:
+        """
+        Args:
             value (int): y dimension of rectangle
 
         Attributes:
             __height (int): y dimension of rectangle
 
         """
+
         self.__integer_validator('height', value)
         self.__height = value
 
     @property
     def x(self):
-        """`__x` getter
+
+        """
+        `__x` getter
 
         Returns:
             __x (int): horizontal offset of rectangle
 
         """
+
         return self.__x
 
     @x.setter
     def x(self, value):
-        """Args:
+        """
+        Args:
             value (int): horizontal offset of rectangle
 
         Attributes:
             __x (int): horizontal offset of rectangle
         """
+
         self.__integer_validator('x', value)
         self.__x = value
 
     @property
     def y(self):
-        """`__y` getter
+
+        """
+        `__y` getter
 
         Returns:
             __y (int): vertical offset of rectangle
 
         """
+
         return self.__y
 
     @y.setter
     def y(self, value):
-        """Args:
+
+        """
+        Args:
             value (int): vertical offset of rectangle
 
         Attributes:
             __y (int): vertical offset of rectangle
 
         """
+
         self.__integer_validator('y', value)
         self.__y = value
 
     def area(self):
-        """Returns area of rectangle as product of `width` and `height`.
+
+        """
+        Returns area of rectangle as product of `width` and `height`.
 
         Returns:
             `__width` * `__height`
@@ -152,10 +186,13 @@ class Rectangle(Base):
             4. Area first - public method `area()`
 
         """
+
         return self.width * self.height
 
     def display(self):
-        """Prints representation of rectangle to stdout using '#'.
+
+        """
+        Prints representation of rectangle to stdout using '#'.
 
         Attributes:
             display (str): printed as ASCII art drawing of rectangle
@@ -168,6 +205,7 @@ class Rectangle(Base):
             7. Display #1 - include use of offset vars `x` and `y`
 
         """
+
         display = ''
         for row in range(self.y):
             display += '\n'
@@ -182,7 +220,9 @@ class Rectangle(Base):
         print(display)
 
     def __str__(self):
-        """Returns string with numeric representation of rectangle
+
+        """
+        Returns string with numeric representation of rectangle
 
         Returns:
             '[Rectangle] (<id>) <x>/<y> - <width>/<height>'
@@ -191,11 +231,14 @@ class Rectangle(Base):
             6. __str__ - `__str__` method
 
         """
+
         return ('[Rectangle] ({:d}) {:d}/'.format(self.id, self.x) +
                 '{:d} - {:d}/{:d}'.format(self.y, self.width, self.height))
 
     def update(self, *args, **kwargs):
-        """Updates attributes in a given order based on variable amount of
+
+        """
+        Updates attributes in a given order based on variable amount of
         non-keyword args, or in any order with keyword args.
 
         `*args` takes precedence over `**kwargs`: if any non-keyword args are
@@ -223,6 +266,7 @@ class Rectangle(Base):
                 in any order. if *args not empty, **kwargs skipped
 
         """
+
         if len(args) == 0:
             if len(kwargs) == 0 or len(kwargs) > 5:
                 raise TypeError('Rectangle.update() takes 1 to 5 keyword,' +
@@ -262,7 +306,9 @@ class Rectangle(Base):
                     self.y = arg
 
     def to_dictionary(self):
-        """Creates dictionary representation of self without revealing private
+
+        """
+        Creates dictionary representation of self without revealing private
         attribute names, as would __dict__.
 
         Returns:
@@ -273,6 +319,7 @@ class Rectangle(Base):
             13. Rectangle instance to dictionary representation
 
         """
+
         self_dict = dict()
         self_dict['id'] = self.id
         self_dict['width'] = self.width
