@@ -8,6 +8,7 @@ from models.base import Base
 
 
 class Square(Rectangle):
+
     """Creates square objects with 2 dimensions and offset coordinates.
 
     Uses super-superclass `Base` __init__ to create valid instance id,
@@ -25,6 +26,7 @@ class Square(Rectangle):
             only inherited validation, no new attributes
 
     """
+
     def __init__(self, size, x=0, y=0, id=None):
         super().__init__(size, size, x, y, id)
 
