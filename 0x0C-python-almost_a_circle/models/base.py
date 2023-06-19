@@ -32,7 +32,6 @@ class Base:
     __true_nb_objects = 0
     __assigned_ids = set()
 
-
     def __init__(self, id=None):
         if id is not None:
             self.id = id
