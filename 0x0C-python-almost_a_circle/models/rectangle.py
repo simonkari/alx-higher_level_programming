@@ -101,6 +101,7 @@ class Rectangle(Base):
 
     @height.setter
     def height(self, value):
+
         """Args:
             value (int): y dimension of rectangle
 
@@ -108,27 +109,32 @@ class Rectangle(Base):
             __height (int): y dimension of rectangle
 
         """
+
         self.__integer_validator('height', value)
         self.__height = value
 
     @property
     def x(self):
+
         """`__x` getter
 
         Returns:
             __x (int): horizontal offset of rectangle
 
         """
+
         return self.__x
 
     @x.setter
     def x(self, value):
+
         """Args:
             value (int): horizontal offset of rectangle
 
         Attributes:
             __x (int): horizontal offset of rectangle
         """
+
         self.__integer_validator('x', value)
         self.__x = value
 
