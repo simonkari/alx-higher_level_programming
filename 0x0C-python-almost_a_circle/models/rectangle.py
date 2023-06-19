@@ -34,6 +34,7 @@ class Rectangle(Base):
         self.y = y
 
     def __integer_validator(self, attr, value):
+
         """Validates incoming argument values for use with internal attributes.
 
         Args:
@@ -50,6 +51,7 @@ class Rectangle(Base):
                 `x`, `y`
 
         """
+
         if type(value) is not int:
             raise TypeError('{} must be an integer'.format(attr))
         if attr is 'width' or attr is 'height':
@@ -61,12 +63,14 @@ class Rectangle(Base):
 
     @property
     def width(self):
+
         """`__width` getter
 
         Returns:
             __width (int): x dimension of rectangle
 
         """
+
         return self.__width
 
     @width.setter
