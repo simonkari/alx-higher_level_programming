@@ -255,13 +255,16 @@ class Rectangle(Base):
 
         if len(args) == 0:
             if len(kwargs) == 0 or len(kwargs) > 5:
+
                 raise TypeError('Rectangle.update() takes 1 to 5 keyword,' +
                                 ' or 1 to 5 non-keyword arguments')
             else:
                 for key, value in kwargs.items():
+
                     if key == 'id':
                         self.id = value
                         Base._Base__assigned_ids.add(value)
+
                     elif key == 'width':
                         self.width = value
                     elif key == 'height':
@@ -278,10 +281,12 @@ class Rectangle(Base):
                             ' or 1 to 5 non-keyword arguments')
         else:
             for i, arg in enumerate(args):
+
                 if i == 0:
                     if self.id != arg:
                         self.id = arg
                         Base._Base__assigned_ids.add(arg)
+
                 elif i == 1:
                     self.width = arg
                 elif i == 2:
