@@ -160,6 +160,7 @@ class Base:
         list_dicts = []
         for item in list_objs:
             list_dicts.append(item.to_dictionary())
+
         json_dict = cls.to_json_string(list_dicts)
 
         filename = cls.__name__ + '.json'
@@ -210,6 +211,7 @@ class Base:
         elif cls.__name__ is 'Square':
             temp = cls(1)
         temp.update(**dictionary)
+
         return temp
 
     @classmethod
@@ -236,12 +238,15 @@ class Base:
         if os.path.exists(filename):
             with open(filename, 'r', encoding='utf-8') as file:
                 json_str = file.read()
+
         else:
             return []
         obj_list = cls.from_json_string(json_str)
+
         instance_list = []
         for item in obj_list:
             instance_list.append(cls.create(**item))
+
         return instance_list
 
     @classmethod
@@ -267,6 +272,7 @@ class Base:
 
         if cls.__name__ == 'Rectangle':
             keys = ('id', 'width', 'height', 'x', 'y')
+
         elif cls.__name__ == 'Square':
             keys = ('id', 'size', 'x', 'y')
 
@@ -278,6 +284,7 @@ class Base:
         with open(filename, 'w', encoding='utf-8') as file:
             csv_writer = csv.DictWriter(file, keys)
             csv_writer.writeheader()
+
             for dict in list_dicts:
                 csv_writer.writerow(dict)
 
@@ -303,6 +310,7 @@ class Base:
 
         if cls.__name__ == 'Rectangle':
             keys = ('id', 'width', 'height', 'x', 'y')
+
         elif cls.__name__ == 'Square':
             keys = ('id', 'size', 'x', 'y')
 
