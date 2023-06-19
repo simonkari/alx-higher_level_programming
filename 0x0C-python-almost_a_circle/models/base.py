@@ -37,7 +37,6 @@ class Base:
     __true_nb_objects = 0
     __assigned_ids = set()
 
-    # attribute assigment here engages setters defined below
 
     def __init__(self, id=None):
         if id is not None:
@@ -84,7 +83,6 @@ class Base:
 
     @property
     def serial(self):
-
         """Getter for `serial`
 
         Returns:
@@ -92,7 +90,6 @@ class Base:
                 from __true_nb_objects at time of instantiation
 
         """
-
         return self.__serial
 
     @serial.setter
@@ -282,7 +279,7 @@ class Base:
     @classmethod
     def load_from_file_csv(cls):
 
-        """Returns list of the instances from file <class name>.csv, or empty list
+        """Returns list of instances from file <class name>.csv, or empty list
         if no file. `cls` determines class of instances.
 
         Returns:

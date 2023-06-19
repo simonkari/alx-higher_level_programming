@@ -1,9 +1,7 @@
 #!/usr/bin/python3
 
 
-"""
-0x0C. Python - Almost a circle, task 10 - 14
-"""
+"""0x0C. Python - Almost a circle, task 10 - 14"""
 
 from models.rectangle import Rectangle
 from models.base import Base
@@ -11,8 +9,7 @@ from models.base import Base
 
 class Square(Rectangle):
 
-    """
-    Creates square objects with 2 dimensions and offset coordinates.
+    """Creates square objects with 2 dimensions and offset coordinates.
 
     Uses super-superclass `Base` __init__ to create valid instance id,
     and passes args to superclass `__init__` to set attributes. Does not
@@ -35,8 +32,7 @@ class Square(Rectangle):
 
     def __str__(self):
 
-        """
-        Returns string with numeric representation of square
+        """Returns string with numeric representation of square
 
         Returns:
             '[Square] (<id>) <x>/<y> - <size>'
@@ -51,9 +47,7 @@ class Square(Rectangle):
 
     @property
     def size(self):
-
-        """
-        `size` getter, but in this case `size` acts as alias for
+        """`size` getter, but in this case `size` acts as alias for
         `width`/`height`.
 
         Returns:
@@ -64,14 +58,11 @@ class Square(Rectangle):
                 validation from super().width
 
         """
-
         return self.width
 
     @size.setter
     def size(self, value):
-
-        """
-        `size` setter, but in this case `size` acts as alias for
+        """`size` setter, but in this case `size` acts as alias for
         `width`/`height`.
 
         Args:
@@ -82,14 +73,12 @@ class Square(Rectangle):
                 validation from super().width
 
         """
-
         self.width = value
         self.height = value
 
     def update(self, *args, **kwargs):
 
-        """
-        Updates superclass attributes in a given order based on variable
+        """Updates superclass attributes in a given order based on variable
         amount of non-keyword args, or in any order with keyword args.
 
         `*args` takes precedence over `**kwargs`: if any non-keyword args are
@@ -158,8 +147,7 @@ class Square(Rectangle):
 
     def to_dictionary(self):
 
-        """
-        Creates dictionary representation of self without revealing private
+        """Creates dictionary representation of self without revealing private
         attribute names, as would __dict__.
 
         Returns:
@@ -176,4 +164,5 @@ class Square(Rectangle):
         self_dict['size'] = self.size
         self_dict['x'] = self.x
         self_dict['y'] = self.y
+
         return self_dict
