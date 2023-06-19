@@ -1,8 +1,9 @@
 #!/usr/bin/python3
-""" 2-main """
+"""2-main"""
 from models.rectangle import Rectangle
 
 if __name__ == "__main__":
+    Rectangle._id = 0  # Initialize the class attribute
 
     r1 = Rectangle(10, 2)
     print(r1.id)

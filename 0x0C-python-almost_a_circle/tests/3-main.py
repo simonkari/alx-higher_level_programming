@@ -1,27 +1,26 @@
 #!/usr/bin/python3
-""" 3-main """
+"""3-main"""
 from models.rectangle import Rectangle
 
 if __name__ == "__main__":
-
     try:
         Rectangle(10, "2")
-    except Exception as e:
-        print("[{}] {}".format(e.__class__.__name__, e))
+    except TypeError as e:
+        print("[{}] {}".format(type(e).__name__, e))
 
     try:
         r = Rectangle(10, 2)
         r.width = -10
-    except Exception as e:
-        print("[{}] {}".format(e.__class__.__name__, e))
+    except ValueError as e:
+        print("[{}] {}".format(type(e).__name__, e))
 
     try:
         r = Rectangle(10, 2)
         r.x = {}
-    except Exception as e:
-        print("[{}] {}".format(e.__class__.__name__, e))
+    except TypeError as e:
+        print("[{}] {}".format(type(e).__name__, e))
 
     try:
         Rectangle(10, 2, 3, -1)
-    except Exception as e:
-        print("[{}] {}".format(e.__class__.__name__, e))
+    except ValueError as e:
+        print("[{}] {}".format(type(e).__name__, e))

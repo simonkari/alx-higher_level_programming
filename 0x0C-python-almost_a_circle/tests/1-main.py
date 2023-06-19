@@ -1,8 +1,9 @@
 #!/usr/bin/python3
-""" 1-main """
+"""1-main"""
 from models.base import Base
 
 if __name__ == "__main__":
+    Base._id = 0  # Initialize the class attribute
 
     b1 = Base()
     print(b1.id)
