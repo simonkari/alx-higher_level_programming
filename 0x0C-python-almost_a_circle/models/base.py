@@ -5,23 +5,23 @@ import csv
 
 
 class Base:
-    """Assigns `id` and manages related properties across instances.
+    """Assigns `id` and manages related attributes across all instances.
 
-    Assigns valid id from arg, without an arg current count of
-    instances, `__nb_objects`. Added features are not in project instructions:
-    `__assigned_ids` (set) of (int): the set of all ids assigned at least once
+    Assigns valid id from arg, or without an arg the current count of
+    instances, `__nb_objects`. Added features not in project instructions:
+    `__assigned_ids` (set) of (int): set of all ids assigned at least once
     `__serial` (int) + getter/setter: `__nb_objects` after self.__init__, does
     not change even if `id` does
 
     Args:
-        id (int): identify number for each instance of cls, may be assigned
-            to several instances
+        id (int): identifying number for each instance of cls, may be assigned
+            to multiple instances
 
     Attributes:
-        __nb_objects (int): the number of `Base` instances not assigned id at
+        __nb_objects (int): number of `Base` instances not assigned id at
             initialization
-        __true_nb_objects (int): the total of all of `Base` instances
-        __assigned_ids (set) of (ints): the set of all `id` numbers assigned at
+        __true_nb_objects (int): total all of `Base` instances
+        __assigned_ids (set) of (ints): set of all `id` numbers assigned at
             least once
 
     Project tasks:
@@ -56,7 +56,7 @@ class Base:
         """Getter for `id`
 
         Returns:
-            __id (int): the unique identifer for each instance of cls
+            __id (int): unique identifer for each instance of cls
 
         """
         return self.__id
@@ -64,13 +64,13 @@ class Base:
     @id.setter
     def id(self, value):
         """Args:
-            value (int): the number to be assigned as id
+            value (int): number to be assigned as id
 
         Attributes:
-            __id (int): the unique identifer for each instance of cls
+            __id (int): unique identifer for each instance of cls
 
         Raises:
-            ValueError: if the `id` arg is 0, negative, or already assigned.
+            ValueError: if `id` arg is 0, negative, or already assigned.
 
         """
         if value < 1:
@@ -82,7 +82,7 @@ class Base:
         """Getter for `serial`
 
         Returns:
-            __serial (int): the unique identifer for each instance of cls, taken
+            __serial (int): unique identifer for each instance of cls, taken
                 from __true_nb_objects at time of instantiation
 
         """
@@ -91,20 +91,20 @@ class Base:
     @serial.setter
     def serial(self, value):
         """Args:
-            value (int): the number to be assigned as `serial`
+            value (int): number to be assigned as `serial`
 
         Attributes:
-            __serial (int): the unique identifer for each instance of cls, taken
+            __serial (int): unique identifer for each instance of cls, taken
                 from __true_nb_objects at time of instantiation
         """
         self.__serial = value
 
     @staticmethod
     def to_json_string(list_dictionaries):
-        """Converts the list of dictionaries into JSON string.
+        """Converts list of dictionaries into JSON string.
 
         Args:
-            list_dictionaries (list) of (dict): the list to be converted
+            list_dictionaries (list) of (dict): list to be converted
 
         Returns:
             JSON format string of `list_dictionaries`, or '[]' if None or
@@ -123,15 +123,15 @@ class Base:
 
     @classmethod
     def save_to_file(cls, list_objs):
-        """Saves to the  file  JSON formatted string of  list of dictionary
+        """Saves to file a JSON formatted string of a list of dictionary
         representations of objects of `Base` derived classes.
 
         Args:
-            list_objs (list) of (dict): the list of `Base` derived objects (in
+            list_objs (list) of (dict): list of `Base` derived objects (in
                 this project `Rectangle` and `Square`)
 
         Project tasks:
-            16. JSON string to the file - class method `save_to_file()` that writes
+            16. JSON string to file - class method `save_to_file()` that writes
                 the JSON string representation of `list_objs` to a file, using
                 `to_json_string()`, overwriting existing file, class name in
                 filename, if list None then list = []
@@ -151,11 +151,11 @@ class Base:
 
     @staticmethod
     def from_json_string(json_string):
-        """Returns the list of objects represented by JSON format string,
+        """Returns list of objects represented by JSON format string,
         or [] if `json_string` is None or empty
 
         Args:
-            json_string (str): JSON format string to  convert
+            json_string (str): JSON format string to be converted
 
         Returns:
             List of objects represented by JSON format string, or [] if
@@ -174,11 +174,11 @@ class Base:
 
     @classmethod
     def create(cls, **dictionary):
-        """Creates new dummy instance of the class and `update()`s it using
+        """Creates a new dummy instance of class and `update()`s it using
         `dictionary` as keyword args
 
         Args:
-            dictionary (dict): the dictionary to  use as keyword args
+            dictionary (dict): dictionary to be used as keyword args
 
         Project tasks:
             18. Dictionary to Instance - class method `create()` that creates
@@ -195,7 +195,7 @@ class Base:
 
     @classmethod
     def load_from_file(cls):
-        """Returns the list of instances from file <class name>.json, or empty list
+        """Returns list of instances from file <class name>.json, or empty list
         if no file. `cls` determines class of instances.
 
         Returns:
@@ -225,11 +225,11 @@ class Base:
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
-        """Saves to the file CSV formatted string of list of dictionary
+        """Saves to file a CSV formatted string of a list of dictionary
         representations of objects of `Base` derived classes.
 
         Args:
-            list_objs (list) of (dict): the list of `Base` derived objects (in
+            list_objs (list) of (dict): list of `Base` derived objects (in
                 this project `Rectangle` and `Square`)
 
         Project tasks:
@@ -260,11 +260,11 @@ class Base:
 
     @classmethod
     def load_from_file_csv(cls):
-        """Returns the list of instances from file <class name>.csv, or empty list
+        """Returns list of instances from file <class name>.csv, or empty list
         if no file. `cls` determines class of instances.
 
         Returns:
-            list of instances of the  `cls` from file <class name>.csv, or empty
+            list of instances of `cls` from file <class name>.csv, or empty
                 list if no file
 
         Project tasks:
