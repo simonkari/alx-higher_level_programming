@@ -75,6 +75,7 @@ class Rectangle(Base):
 
     @width.setter
     def width(self, value):
+
         """Args:
             value (int): x dimension of rectangle
 
@@ -82,17 +83,20 @@ class Rectangle(Base):
             __width (int): x dimension of rectangle
 
         """
+
         self.__integer_validator('width', value)
         self.__width = value
 
     @property
     def height(self):
+
         """`__height` getter
 
         Returns:
             __height (int): y dimension of rectangle
 
         """
+
         return self.__height
 
     @height.setter
