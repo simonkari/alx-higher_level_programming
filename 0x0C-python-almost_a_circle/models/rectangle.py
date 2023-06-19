@@ -140,16 +140,19 @@ class Rectangle(Base):
 
     @property
     def y(self):
+
         """`__y` getter
 
         Returns:
             __y (int): vertical offset of rectangle
 
         """
+
         return self.__y
 
     @y.setter
     def y(self, value):
+
         """Args:
             value (int): vertical offset of rectangle
 
@@ -157,10 +160,12 @@ class Rectangle(Base):
             __y (int): vertical offset of rectangle
 
         """
+
         self.__integer_validator('y', value)
         self.__y = value
 
     def area(self):
+
         """Returns area of rectangle as product of `width` and `height`.
 
         Returns:
@@ -170,6 +175,7 @@ class Rectangle(Base):
             4. Area first - public method `area()`
 
         """
+
         return self.width * self.height
 
     def display(self):
