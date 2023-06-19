@@ -179,6 +179,7 @@ class Rectangle(Base):
         return self.width * self.height
 
     def display(self):
+
         """Prints representation of rectangle to stdout using '#'.
 
         Attributes:
@@ -192,6 +193,7 @@ class Rectangle(Base):
             7. Display #1 - include use of offset vars `x` and `y`
 
         """
+
         display = ''
         for row in range(self.y):
             display += '\n'
@@ -206,6 +208,7 @@ class Rectangle(Base):
         print(display)
 
     def __str__(self):
+
         """Returns string with numeric representation of rectangle
 
         Returns:
@@ -215,10 +218,12 @@ class Rectangle(Base):
             6. __str__ - `__str__` method
 
         """
+
         return ('[Rectangle] ({:d}) {:d}/'.format(self.id, self.x) +
                 '{:d} - {:d}/{:d}'.format(self.y, self.width, self.height))
 
     def update(self, *args, **kwargs):
+
         """Updates attributes in a given order based on variable amount of
         non-keyword args, or in any order with keyword args.
 
@@ -247,6 +252,7 @@ class Rectangle(Base):
                 in any order. if *args not empty, **kwargs skipped
 
         """
+
         if len(args) == 0:
             if len(kwargs) == 0 or len(kwargs) > 5:
                 raise TypeError('Rectangle.update() takes 1 to 5 keyword,' +
@@ -286,6 +292,7 @@ class Rectangle(Base):
                     self.y = arg
 
     def to_dictionary(self):
+
         """Creates dictionary representation of self without revealing private
         attribute names, as would __dict__.
 
@@ -297,10 +304,12 @@ class Rectangle(Base):
             13. Rectangle instance to dictionary representation
 
         """
+
         self_dict = dict()
         self_dict['id'] = self.id
         self_dict['width'] = self.width
         self_dict['height'] = self.height
         self_dict['x'] = self.x
         self_dict['y'] = self.y
+
         return self_dict
