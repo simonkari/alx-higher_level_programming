@@ -1,14 +1,10 @@
 #!/usr/bin/python3
-
-
 """0x0C. Python - Almost a circle, task 10 - 14"""
-
 from models.rectangle import Rectangle
 from models.base import Base
 
 
 class Square(Rectangle):
-
     """Creates square objects with 2 dimensions and offset coordinates.
 
     Uses super-superclass `Base` __init__ to create valid instance id,
@@ -26,12 +22,10 @@ class Square(Rectangle):
             only inherited validation, no new attributes
 
     """
-
     def __init__(self, size, x=0, y=0, id=None):
         super().__init__(size, size, x, y, id)
 
     def __str__(self):
-
         """Returns string with numeric representation of square
 
         Returns:
@@ -41,7 +35,6 @@ class Square(Rectangle):
             10. And now, the Square! - class Square `__init__`, `__str__`,
                 only inherited validation, no new attributes
         """
-
         return ('[Square] ({:d}) {:d}/'.format(self.id, self.x) +
                 '{:d} - {:d}'.format(self.y, self.width))
 
@@ -77,7 +70,6 @@ class Square(Rectangle):
         self.height = value
 
     def update(self, *args, **kwargs):
-
         """Updates superclass attributes in a given order based on variable
         amount of non-keyword args, or in any order with keyword args.
 
@@ -105,7 +97,6 @@ class Square(Rectangle):
                 any order. if *args not empty, **kwargs skipped
 
         """
-
         if len(args) == 0:
             if len(kwargs) == 0 or len(kwargs) > 4:
                 raise TypeError('Square.update() takes 1 to 4 keyword,' +
@@ -146,7 +137,6 @@ class Square(Rectangle):
                     self.y = arg
 
     def to_dictionary(self):
-
         """Creates dictionary representation of self without revealing private
         attribute names, as would __dict__.
 
@@ -158,11 +148,9 @@ class Square(Rectangle):
             14. Square instance to dictionary representation
 
         """
-
         self_dict = dict()
         self_dict['id'] = self.id
         self_dict['size'] = self.size
         self_dict['x'] = self.x
         self_dict['y'] = self.y
-
         return self_dict
