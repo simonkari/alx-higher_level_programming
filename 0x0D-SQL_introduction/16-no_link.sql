@@ -2,6 +2,7 @@
 -- Don’t list rows without name value.
 -- The results should display the score and the name (in this order).
 -- The records should be listed by descending score.
+
 SELECT score, `name`
 FROM second_table
 WHERE `name` IS NOT NULL
