@@ -1,5 +1,4 @@
 #!/usr/bin/node
-
 const argv = require('process').argv;
 
 if (!argv[2]) {
