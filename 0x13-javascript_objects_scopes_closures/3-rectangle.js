@@ -1,13 +1,9 @@
 #!/usr/bin/node
 
-class Rectangle {
+module.exports = class Rectangle {
   constructor(w, h) {
-    w = parseInt(w);
-    h = parseInt(h);
-    
     if (w > 0 && h > 0) {
-      this.width = w;
-      this.height = h;
+      [this.width, this.height] = [w, h];
     }
   }
 
@@ -16,6 +12,4 @@ class Rectangle {
       console.log('X'.repeat(this.width));
     }
   }
-}
-
-module.exports = Rectangle;
+};
