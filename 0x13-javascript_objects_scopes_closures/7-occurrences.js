@@ -4,6 +4,7 @@
 
 exports.nbOccurences = function (list, searchElement) {
   let count = 0;
+
   list.map(
     (x) => {
       if (x === searchElement) {
