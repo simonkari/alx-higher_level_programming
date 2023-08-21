@@ -15,7 +15,6 @@ if __name__ == "__main__":
                 "mysql+mysqldb://{}:{}@localhost/{}".format(argv[1], argv[2], argv[3])
     )
     Base.metadata.create_all(engine)
-
     Session = sessionmaker(bind=engine)
     session = Session()
     states = session.query(State).filter(State.id == 2).all()
@@ -25,4 +24,3 @@ if __name__ == "__main__":
     session.commit()
     # close session
     session.close()
-    
