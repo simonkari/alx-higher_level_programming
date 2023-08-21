@@ -13,13 +13,10 @@ if __name__ == "__main__":
                            user=argv[1], passwd=argv[2], db=argv[3])
     # Create a cursor to interact with the database
     cur = db.cursor()
-    
     # Execute a SELECT query to retrieve data from the "states" table
     cur.execute("SELECT * FROM states ORDER BY states.id ASC")
-    
     # Fetch all rows returned by the query
     query_rows = cur.fetchall()
-    
     # Iterate through the query results and print each row
     for row in query_rows:
         print(row)
