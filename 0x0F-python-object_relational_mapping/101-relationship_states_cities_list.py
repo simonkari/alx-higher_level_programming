@@ -7,27 +7,18 @@ from relationship_city import City
 from sqlalchemy import (create_engine)
 from sqlalchemy.orm import sessionmaker
 
-def main():
-    if len(sys.argv) != 4:
-        print("Usage: {} <db_user> <db_password> <db_name>".format(sys.argv[0]))
-        return
+if __name__ == "__main__":
+    engine = create_engine(
+                'mysql+mysqldb://{}:{}@localhost:3306/{}'
+                .format(argv[1], argv[2], argv[3]), pool_pre_ping=True)
+    Base.metadata.create_all(engine)
 
-    db_user, db_password, db_name = sys.argv[1], sys.argv[2], sys.argv[3]
-
-    engine = create_engine(f"mysql+mysqldb://{db_user}:{db_password}@localhost/{db_name}",
-                           pool_pre_ping=True)
     Session = sessionmaker(bind=engine)
     session = Session()
-
-    try:
-        for state in session.query(State).order_by(State.id):
-            print("{}: {}".format(state.id, state.name))
-            for city in state.cities:
-                print("    {}: {}".format(city.id, city.name))
-    except Exception as e:
-        print("An error occurred:", e)
-    finally:
-        session.close()
-
-if __name__ == "__main__":
-    main()
+    states = session.query(State).order_by(State.id).all()
+    for state in states:
+        print("{}: {}".format(state.id, state.name))
+        for city in state.cities:
+            print("\t{}: {}".format(city.id, city.name))
+    session.commit()
+    session.close()
