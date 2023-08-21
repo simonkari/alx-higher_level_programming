@@ -3,24 +3,39 @@
 Lists all State objects.
 """
 
-from sys import argv
-from model_state import Base, State
+import sqlalchemy
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+from sys import argv
+from model_state import Base, State
+
+def establish_connection(username, password, database):
+    connection_string = f"mysql+mysqldb://{username}:{password}@localhost/{database}"
+    engine = create_engine(connection_string)
+    return engine
+
+def list_states(session):
+    for state in session.query(State).order_by(State.id):
+        print(f"{state.id}: {state.name}")
 
 def main():
     try:
-        engine = create_engine(
-            f'mysql+mysqldb://{argv[1]}:{argv[2]}@localhost:3306/{argv[3]}',
-            pool_pre_ping=True
-        )
+        username = argv[1]
+        password = argv[2]
+        database = argv[3]
+
+        engine = establish_connection(username, password, database)
         Base.metadata.create_all(engine)
+
         Session = sessionmaker(bind=engine)
-        with Session() as session:
-            states = session.query(State).order_by(State.id).all()
-            for state in states:
-                print(f"{state.id}: {state.name}")
+        session = Session()
+
+        list_states(session)
+
+        session.close()
+
     except Exception as e:
         print(f"An error occurred: {e}")
+
 if __name__ == "__main__":
     main()
