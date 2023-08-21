@@ -1,23 +1,20 @@
 #!/usr/bin/python3
-""" define city object"""
+""" Provide a definition for a city entity."""
 
-import sqlalchemy
 from sqlalchemy import Column, Integer, String, ForeignKey
-from relationship_state import Base, State
-# Create a declarative base class for SQLAlchemy models
-Base = declarative_base()
+from relationship_state import Base
 
 class City(Base):
-    """
-    Represents a city for a MySQL database.
-
-    Attributes:
-        id (sqlalchemy.Column): The city's id.
-        name (sqlalchemy.Column): The city's name.
-        state_id (sqlalchemy.Column): The city's state id.
-    """
-    __tablename__ = "cities"
+    """Class representing a city."""
+    __tablename__ = "cities"  # This sets the name of the table in the database.
+    
     id = Column(Integer, primary_key=True, nullable=False,
                 autoincrement=True, unique=True)
+    # The 'id' column serves as the primary key for the 'cities' table.
+    
     name = Column(String(128), nullable=False)
+    # The 'name' column stores the name of the city, limited to 128 characters.
+    
     state_id = Column(Integer, ForeignKey("states.id"), nullable=False)
+    # The 'state_id' column is a foreign key that references the 'id' column in the 'states' table.
+    # This establishes a relationship between cities and states.
