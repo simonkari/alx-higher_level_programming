@@ -6,7 +6,6 @@ import MySQLdb
 from sys import argv
 
 if __name__ == "__main__":
-    
     # database connection
     conn = MySQLdb.connect(
         host="localhost",
@@ -24,7 +23,6 @@ if __name__ == "__main__":
     query_rows = cur.fetchall()
     for row in query_rows:
         print(row)
-    
     # close database connection
     cur.close()
     conn.close()
