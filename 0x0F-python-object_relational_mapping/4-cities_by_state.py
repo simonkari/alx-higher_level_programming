@@ -1,10 +1,9 @@
 #!/usr/bin/python3
 """
-This script used to select cities by states from the
+This script is used to select cities by states from the
 database hbtn_0e_4_usa.
 """
 
-# import modules
 import MySQLdb
 from sys import argv
 
@@ -17,8 +16,6 @@ if __name__ == "__main__":
         LEFT JOIN states ON cities.state_id = states.id
         ORDER BY cities.id ASC;
         """)
-    
-    # fetch all rows of the query
     query_rows = cur.fetchall()
     for row in query_rows:
         print(row)
