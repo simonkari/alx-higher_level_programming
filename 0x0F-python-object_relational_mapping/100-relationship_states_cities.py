@@ -11,8 +11,9 @@ from relationship_city import Base, City
 if __name__ == "__main__":
     # Create a database engine using SQLAlchemy's create_engine function
     engine = create_engine(
-        "mysql+mysqldb://{}:{}@localhost/{}".format(argv[1], argv[2], argv[3])
-    )
+                'mysql+mysqldb://{}:{}@localhost:3306/{}'.format(argv[1], argv[2], argv[3]),
+                pool_pre_ping=True
+             )
     
     # Create tables in the database based on the defined models
     Base.metadata.create_all(engine)
