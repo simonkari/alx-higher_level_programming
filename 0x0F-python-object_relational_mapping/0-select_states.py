@@ -3,22 +3,22 @@
 A script that selects and displays all states from the database hbtn_0e_0_usa.
 '''
 
-# import module
+import sys
 import MySQLdb
-from sys import argv
+
+def fetch_and_print_states(user, password, database):
+    query = "SELECT id, name FROM states ORDER BY id ASC"
+    
+    with MySQLdb.connect(host="localhost", port=3306, user=user, passwd=password, db=database) as conn:
+        with conn.cursor() as cur:
+            cur.execute(query)
+            for row in cur:
+                print(row)
 
 if __name__ == "__main__":
-    db = MySQLdb.connect(host="localhost", port=3306, charset="utf8",
-                           user=argv[1], passwd=argv[2], db=argv[3])
-    # Create a cursor to interact with the database
-    cur = db.cursor()
-    # Execute a SELECT query to retrieve data from the "states" table
-    cur.execute("SELECT * FROM states ORDER BY states.id ASC")
-    # Fetch all rows returned by the query
-    query_rows = cur.fetchall()
-    # Iterate through the query results and print each row
-    for row in query_rows:
-        print(row)
-    # Close the cursor and the database connection
-    cur.close()
-    db.close()
+    if len(sys.argv) != 4:
+        print("Usage: {} <username> <password> <database>".format(sys.argv[0]))
+        sys.exit(1)
+    
+    username, password, database = sys.argv[1], sys.argv[2], sys.argv[3]
+    fetch_and_print_states(username, password, database)
