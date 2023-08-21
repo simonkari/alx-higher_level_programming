@@ -14,7 +14,8 @@ if __name__ == "__main__":
         charset="utf8",
         user=argv[1],
         passwd=argv[2],
-        db=argv[3])
+        db=argv[3]
+    )
      # Create a cursor to execute SQL queries
     cur = conn.cursor()
     cur.execute("SELECT * FROM states ORDER BY states.id ASC")
