@@ -1,32 +1,38 @@
 #!/usr/bin/python3
-"""List all states that match the given argument with no injection risk."""
-
-import MySQLdb
+# Displays all values in the states table of the database hbtn_0e_0_usa
+# whose name matches that supplied as an argument.
+# Safe from SQL injections.
+# Usage: ./3-my_safe_filter_states.py <mysql username> \
+#                                     <mysql password> \
+#                                     <database name> \
+#                                     <state name searched>
 import sys
+import MySQLdb
 
 def main():
     if len(sys.argv) != 5:
-        print("Usage: {} <user> <password> <database> <state_name>".format(sys.argv[0]))
+        print("Usage: {} <mysql username> <mysql password> <database name> <state name searched>".format(sys.argv[0]))
         sys.exit(1)
-    
-    user, password, database, state_name = sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4]
-    
+
+    username = sys.argv[1]
+    password = sys.argv[2]
+    database = sys.argv[3]
+    state_name = sys.argv[4]
+
     try:
-        conn = MySQLdb.connect(
-            host="localhost", port=3306, charset="utf8",
-            user=user, passwd=password, db=database
-        )
-        with conn.cursor() as cur:
-            query = "SELECT * FROM states WHERE name = %s ORDER BY id ASC"
-            cur.execute(query, (state_name,))
-            query_rows = cur.fetchall()
-            for row in query_rows:
-                print(row)
+        db = MySQLdb.connect(user=username, passwd=password, db=database)
+        c = db.cursor()
+        query = "SELECT * FROM `states` WHERE name = %s"
+        c.execute(query, (state_name,))
+        
+        for state in c.fetchall():
+            print(state)
+        
     except MySQLdb.Error as e:
-        print("An error occurred:", e)
+        print("Error: {}".format(e))
     finally:
-        if conn:
-            conn.close()
+        if db:
+            db.close()
 
 if __name__ == "__main__":
     main()
