@@ -11,23 +11,26 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 def main():
-    # Unpack command line arguments
-    script_name, db_user, db_password, db_name = argv
-    # Use an f-string for more readable string formatting
-    db_url = f"mysql+mysqldb://{db_user}:{db_password}@localhost:3306/{db_name}"
-    # Use context manager to handle session and engine
-    with create_engine(db_url, pool_pre_ping=True).connect() as engine:
+    if len(sys.argv) != 4:
+        print("Usage: python script_name.py username password dbname")
+        return
+
+    connection_string = (
+        f"mysql+mysqldb://{sys.argv[1]}:{sys.argv[2]}@localhost:3306/{sys.argv[3]}"
+    )
+
+    try:
+        engine = create_engine(connection_string, pool_pre_ping=True)
         Base.metadata.create_all(engine)
 
         Session = sessionmaker(bind=engine)
-        session = Session()
-        # Use .first() to retrieve a single result instead of .all() and indexing
-        state = session.query(State).filter(State.id == 2).first()
+        with Session() as session:
+            state = session.query(State).filter_by(id=2).first()
+            if state:
+                state.name = "New Mexico"
+                session.commit()
+    except Exception as e:
+        print("An error occurred:", e)
 
-        if state:
-            state.name = "New Mexico"
-
-        session.commit()
-    # The session is automatically closed at the end of the context block
 if __name__ == "__main__":
     main()
