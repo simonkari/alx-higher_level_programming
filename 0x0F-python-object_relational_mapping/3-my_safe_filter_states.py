@@ -16,17 +16,15 @@ def main():
             host="localhost", port=3306, charset="utf8",
             user=user, passwd=password, db=database
         )
-        cur = conn.cursor()
-        query = "SELECT * FROM states WHERE name = %s ORDER BY states.id ASC"
-        cur.execute(query, (state_name,))
-        query_rows = cur.fetchall()
-        for row in query_rows:
-            print(row)
+        with conn.cursor() as cur:
+            query = "SELECT * FROM states WHERE name = %s ORDER BY id ASC"
+            cur.execute(query, (state_name,))
+            query_rows = cur.fetchall()
+            for row in query_rows:
+                print(row)
     except MySQLdb.Error as e:
         print("An error occurred:", e)
     finally:
-        if cur:
-            cur.close()
         if conn:
             conn.close()
 
