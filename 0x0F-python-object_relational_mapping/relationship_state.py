@@ -1,25 +1,24 @@
 #!/usr/bin/python3
-""" Declare ORM entity."""
+"""
+Defines a SQLAlchemy model for representing
+states and their cities.
+"""
 
-import sqlalchemy
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import relationship
+from sqlalchemy.orm import relationship, backref
+import sqlalchemy
 
 Base = declarative_base()
 
 
 class State(Base):
-    """ Object-Relational Mapping (ORM) representation of a state. """
+    """ ORM class for state """
     __tablename__ = "states"
-    id = Column(
-        Integer,
-        primary_key=True,
-        autoincrement=True,
-        unique=True,
-        nullable=False
-    )
+    id = Column(Integer, primary_key=True, nullable=False,
+                autoincrement=True, unique=True)
     name = Column(String(128), nullable=False)
+
     cities = relationship(
         "City",
         cascade="all, delete-orphan",
