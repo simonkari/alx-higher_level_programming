@@ -3,11 +3,11 @@
 Lists all State objects.
 """
 
+from model_state import Base, State
 import sqlalchemy
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sys import argv
-from model_state import Base, State
 
 def establish_connection(username, password, database):
     connection_string = f"mysql+mysqldb://{username}:{password}@localhost/{database}"
