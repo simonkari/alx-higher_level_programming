@@ -1,6 +1,8 @@
 #!/usr/bin/python3
-"""list all states"""
-
+'''
+A script that selects and displays all states from the database hbtn_0e_0_usa.
+'''
+# import module
 import sys
 import MySQLdb
 
@@ -16,14 +18,12 @@ def main():
             passwd=sys.argv[2],
             db=sys.argv[3]
         )
-
         with db.cursor() as cur:
             # Execute SQL query
             cur.execute("SELECT * FROM states ORDER BY id ASC")
 
             # Fetch all rows
             rows = cur.fetchall()
-
             for row in rows:
                 print(row)
     except MySQLdb.Error as e:
@@ -31,6 +31,5 @@ def main():
     finally:
         if db:
             db.close()
-
 if __name__ == "__main__":
     main()
