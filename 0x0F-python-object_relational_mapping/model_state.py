@@ -17,9 +17,5 @@ class State(Base):
     id = Column(Integer, primary_key=True, nullable=False,
                 autoincrement=True, unique=True, doc="Primary key of the state.")
     name = Column(String(128), nullable=False, doc="Name of the state.")
-    
-    # If there are relationships to other tables, define them here
-    # Example: cities = relationship("City", back_populates="state")
-    
     def __repr__(self):
         return f"<State(id={self.id}, name={self.name})>"
