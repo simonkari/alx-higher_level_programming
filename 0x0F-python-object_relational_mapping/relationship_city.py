@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 """ define city object"""
 
-from sqlalchemy import Column, ForeignKey, Integer, String
-from sqlalchemy.ext.declarative import declarative_base
-
+import sqlalchemy
+from sqlalchemy import Column, Integer, String, ForeignKey
+from relationship_state import Base, State
 # Create a declarative base class for SQLAlchemy models
 Base = declarative_base()
 
