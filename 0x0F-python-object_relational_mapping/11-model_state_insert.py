@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Adds the State object Louisiana to a database and prints its assigned ID.
+Adds the State object 'Louisiana' to a database and prints its assigned ID.
 """
 
 # Import modules from SQLAlchemy library
