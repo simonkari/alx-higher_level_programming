@@ -1,26 +1,34 @@
 #!/usr/bin/python3
-"""script that lists all states from the database hbtn_0e_0_usa"""
+'''
+A program that chooses and exhibits all the states from the hbtn_0e_0_usa database.
+'''
 
+# Import modules
 import MySQLdb
 import sys
 
-
-if __name__ == '__main__':
-
+if __name__ == "__main__":
+    '''
+    Primary script for fetching and displaying all states from the database.
+    '''
+    # Create a database connection using MySQLdb
     db = MySQLdb.connect(
-        host='localhost',
+        host="localhost",
+        port=3306,
         user=sys.argv[1],
         passwd=sys.argv[2],
-        db=sys.argv[3],
-        port=3306
-        )
+        db=sys.argv[3]
+    )
 
+    # Generate a cursor for executing SQL queries
     cur = db.cursor()
-    cur.execute("SELECT * FROM states")
-    table = cur.fetchall()
-
-    for row in table:
+    # Run an SQL query to fetch all states from the "states" table
+    cur.execute("SELECT * FROM states ORDER BY id ASC")
+    # Retrieve all rows from the query output
+    rows = cur.fetchall()
+    # Loop through the rows and display each row
+    for row in rows:
         print(row)
-
+    # Terminate the database connection
     cur.close()
     db.close()
