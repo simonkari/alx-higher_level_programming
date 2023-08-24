@@ -13,13 +13,10 @@ Base = declarative_base()
 
 
 class State(Base):
-    """ 
-    State class inheriting from the declarative_base() of Base.
+    """ State class inheriting from the declarative_base() of Base.
     Represents a connection to the MySQL table named 'states'.
-
-    Attributes:
-        id (int): The ID of the state.
-        name (str): The name of the state.
+    Attr:
+        id, name
     """
     __tablename__ = 'states'
     id = Column(Integer, autoincrement=True, primary_key=True)
