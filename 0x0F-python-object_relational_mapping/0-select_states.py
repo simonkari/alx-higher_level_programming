@@ -1,24 +1,45 @@
 #!/usr/bin/python3
-'''
-A script that selects and displays all states from the database hbtn_0e_0_usa.
-'''
+"""
+A program that chooses and exhibits all the states from the hbtn_0e_0_usa database.
+"""
 
 import sys
 import MySQLdb
 
-def fetch_and_print_states(user, password, database):
-    query = "SELECT id, name FROM states ORDER BY id ASC"
-    
-    with MySQLdb.connect(host="localhost", port=3306, user=user, passwd=password, db=database) as conn:
-        with conn.cursor() as cur:
-            cur.execute(query)
-            for row in cur:
-                print(row)
-
-if __name__ == "__main__":
+def main():
+    """
+    Primary function for fetching and showing all states from the database.
+    """
     if len(sys.argv) != 4:
         print("Usage: {} <username> <password> <database>".format(sys.argv[0]))
         sys.exit(1)
-    
-    username, password, database = sys.argv[1], sys.argv[2], sys.argv[3]
-    fetch_and_print_states(username, password, database)
+
+    # Create a database connection using MySQLdb
+    db = MySQLdb.connect(
+        host="localhost",
+        port=3306,
+        user=sys.argv[1],
+        passwd=sys.argv[2],
+        db=sys.argv[3]
+    )
+
+    try:
+        # Generate a cursor for executing SQL queries
+        with db.cursor() as cur:
+            # Run an SQL query to fetch all states from the "states" table
+            cur.execute("SELECT * FROM states ORDER BY id ASC")
+
+            # Retrieve all rows from the query output
+            rows = cur.fetchall()
+
+            # Loop through the rows and display each row
+            for row in rows:
+                print(row)
+    except MySQLdb.Error as e:
+        print("Error: {}".format(e))
+    finally:
+        # Terminate the database connection
+        db.close()
+
+if __name__ == "__main__":
+    main()
