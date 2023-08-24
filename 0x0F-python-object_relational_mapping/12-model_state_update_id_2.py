@@ -1,19 +1,44 @@
 #!/usr/bin/python3
-"""Script that adds the State object “Louisiana” to the database hbtn_0e_6_usa
 """
-import sys
-from model_state import Base, State
+Changes the name of the State object with id=2 to 'New Mexico'
+in the database.
+"""
+
+# Import the necessary modules from the SQLAlchemy library
+import sqlalchemy
+from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from sqlalchemy import (create_engine)
+from sys import argv
+from model_state import Base, State
 
 if __name__ == "__main__":
-    engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'.
-                           format(sys.argv[1], sys.argv[2], sys.argv[3]),
-                           pool_pre_ping=True)
-    Base.metadata.create_all(engine)
-    Session = sessionmaker(bind=engine)
+    """
+    Change the name of the State object with id=2 to 'New Mexico'
+    in the database.
+    """
+    # Create a database connection using SQLAlchemy's create_engine function
+    eng = create_engine(
+        "mysql+mysqldb://{}:{}@localhost/{}".format(argv[1], argv[2], argv[3])
+    )
+
+    # Create the tables in the database based on the defined models
+    Base.metadata.create_all(eng)
+
+    # Create a session to interact with the database
+    Session = sessionmaker(bind=eng)
     session = Session()
 
-    session.query(State).filter(State.id == "2").\
-        update({State.name: "New Mexico"})
-    session.commit()
+    # Query the State object with id=2
+    state = session.query(State).filter_by(id=2).first()
+
+    # Check if the State object was found
+    if state:
+        # Update the name of the State object to 'New Mexico'
+        state.name = "New Mexico"
+        session.commit()
+        print("State with id=2 has been updated to 'New Mexico'.")
+    else:
+        print("State with id=2 not found.")
+
+    # Close the session when done
+    session.close()
