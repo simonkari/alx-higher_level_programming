@@ -1,23 +1,30 @@
 #!/usr/bin/python3
 """
-This script defines SQLAlchemy model for representing
-cities and their states.
+Contains the class definition of a City and an
+instance of Base using declarative_base().
+Base = declarative_base()
 """
 
-from sqlalchemy import Column, Integer, String, ForeignKey
-from relationship_state import Base
+
 import sqlalchemy
+from sqlalchemy import Column, Integer, String
+from relationship_state import Base, State
+from sqlalchemy import ForeignKey
+from sqlalchemy.ext.declarative import declarative_base
 
 
 class City(Base):
-    """city class"""
-    __tablename__ = "cities"
-    id = Column(Integer, primary_key=True, nullable=False,
-                autoincrement=True, unique=True)
-    name = Column(String(128), nullable=False)
+    """ City class inheriting from declarative_base() of Base.
+    Represents a connection to the MySQL table named 'cities'.
+    Attr:
+        id, name
     """
-    The name of the city.
+    __tablename__ = 'cities'
+    id = Column(Integer, unique=True, autoincrement=True, primary_key=True)
+    """
+    The primary key of the city record.
 
-    Type: str
+    Type: int
     """
-    state_id = Column(Integer, ForeignKey("states.id"), nullable=False)
+    name = Column(String(128), nullable=False)
+    state_id = Column(Integer, ForeignKey('states.id'), nullable=False)
