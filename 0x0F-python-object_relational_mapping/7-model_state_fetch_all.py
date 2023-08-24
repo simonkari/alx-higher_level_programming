@@ -18,6 +18,7 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
+    #Retrieve all State instances, ordered by their ID, through a query
     for states_id, states_name in session.query(State.id,
                                                 State.name).order_by(State.id):
         print("{}: {}".format(states_id, states_name))
