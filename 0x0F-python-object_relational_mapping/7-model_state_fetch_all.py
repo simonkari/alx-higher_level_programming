@@ -1,41 +1,27 @@
 #!/usr/bin/python3
 """
-Lists all State objects.
+A script that displays all items present in a database.
 """
-
-from model_state import Base, State
+from sys import argv
 import sqlalchemy
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from sys import argv
-
-def establish_connection(username, password, database):
-    connection_string = f"mysql+mysqldb://{username}:{password}@localhost/{database}"
-    engine = create_engine(connection_string)
-    return engine
-
-def list_states(session):
-    for state in session.query(State).order_by(State.id):
-        print(f"{state.id}: {state.name}")
-
-def main():
-    try:
-        username = argv[1]
-        password = argv[2]
-        database = argv[3]
-
-        engine = establish_connection(username, password, database)
-        Base.metadata.create_all(engine)
-
-        Session = sessionmaker(bind=engine)
-        session = Session()
-
-        list_states(session)
-
-        session.close()
-
-    except Exception as e:
-        print(f"An error occurred: {e}")
+from model_state import Base, State
+import sys
 
 if __name__ == "__main__":
-    main()
+    """
+    Display all State instances stored in a database.
+    """
+    engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'.
+                           format(sys.argv[1], sys.argv[2], sys.argv[3]),
+                           pool_pre_ping=True)
+    #Generate the database tables according to the specified models
+    Base.metadata.create_all(engine)
+    Session = sessionmaker(bind=engine)
+    session = Session()
+
+    #Retrieve all State instances, ordered by their ID, through a query
+    for states_id, states_name in session.query(State.id,
+                                                State.name).order_by(State.id):
+        print("{}: {}".format(states_id, states_name))
