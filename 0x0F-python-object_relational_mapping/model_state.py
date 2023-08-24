@@ -13,20 +13,10 @@ Base = declarative_base()
 
 
 class State(Base):
-    """ 
-    This class serves as an SQLAlchemy model, outlining
-    the structure and characteristics of a state.
-
-    Attributes:
-        __tablename__ (str): The name of the database table
-            where state records are stored.
-
-        id (int): The primary key for state records.
-        name (str): The name of the state.
-
-    Note:
-        The class definition establishes a mapping of
-        this model to the "states" table in the database.
+    """ State Class inherit from Base declarative_base()
+    links to the MySQL table states
+    Attr:
+        id, name
     """
     __tablename__ = 'states'
     id = Column(Integer, autoincrement=True, primary_key=True)
