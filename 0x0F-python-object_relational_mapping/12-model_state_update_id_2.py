@@ -1,13 +1,10 @@
 #!/usr/bin/python3
+"""Script that adds the State object “Louisiana” to the database hbtn_0e_6_usa
 """
-A script that inserts the State object "Louisiana" into the hbtn_0e_6_usa database.
-"""
-# Import modules
+import sys
 from model_state import Base, State
-import sqlalchemy
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import (create_engine)
-import sys
 
 if __name__ == "__main__":
     engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'.
