@@ -1,3 +1,4 @@
 #!/bin/bash
-# This script takes in a URL, sends a request to that URL
+# This script accepts a URL input, initiates a request to the provided URL
+
 curl -sI "$1" | grep Content-Length | cut -d " " -f2
