@@ -5,7 +5,9 @@ A function that finds a peak in a list of unsorted integers.
 
 
 def find_peak(list_of_integers):
-    """Return a peak in a list of unsorted integers."""
+    """
+    Find the highest point within an array of integers that are not sorted.
+    """
     size = len(list_of_integers)
 
     if size == 0:
