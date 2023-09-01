@@ -1,19 +1,22 @@
 #!/usr/bin/python3
-""" Module designed for retrieving data from
-'https://alx-intranet.hbtn.io/status' via HTTPS. """
+""" Python script that fetches https://intranet.hbtn.io/status """
 
-import urllib.error
+# Import the necessary library
 import urllib.request
 
+# Check if the script is being run as the main program
 if __name__ == "__main__":
-    url = 'https://alx-intranet.hbtn.io/status'
-    
-    try:
-        with urllib.request.urlopen(url) as response:
-            html = response.read()
-            print('Body response:')
-            print(f'\t- type: {type(html)}')
-            print(f'\t- content: {html}')
-            print(f'\t- utf8 content: {html.decode("utf-8")}')
-    except urllib.error.URLError as e:
-        print(f"Error: {e}")
+    # Send an HTTP GET request and store the response in 'response'
+    with urllib.request.urlopen('https://intranet.hbtn.io/status') as response:
+        # Read the content of the response and store it in the 'html' variable
+        html = response.read()
+
+        # Print information about the response and its content
+        print('Body response:')
+        # Print the type of the response content
+        print('\t- type: {}'.format(type(html)))
+        # Print the raw content (bytes) 
+        print('\t- content: {}'.format(html))
+        
+        # Decode the content from bytes to UTF-8 and print it
+        print('\t- utf8 content: {}'.format(html.decode("utf-8")))
