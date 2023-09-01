@@ -3,11 +3,10 @@
 
 Usage: ./8-json_api.py <letter>
   - letter sent as value of variable `q`.
-  - No letter is provided, sends `q=""`.
+  - If no letter is provided, sends `q=""`.
 """
-
-import requests
 import sys
+import requests
 
 if __name__ == "__main__":
     # Determine the value of the 'letter' variable based on command-line arguments
