@@ -4,8 +4,8 @@
 Usage: ./100-github_commits.py <repository name> <repository owner>
 """
 # Import the necessary libraries
-import sys
 import requests
+import sys
 
 # Check if the script is being run as the main program
 if __name__ == "__main__":
