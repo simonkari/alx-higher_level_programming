@@ -4,7 +4,6 @@
 Usage: ./6-post_email.py <URL> <email>
   - Displays the body of the response.
 """
-
 import requests
 import sys
 
