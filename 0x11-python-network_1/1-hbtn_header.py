@@ -6,8 +6,8 @@ Usage: ./1-hbtn_header.py <URL>
 """
 
 # Import the necessary libraries
-import sys
 import urllib.request
+import sys
 
 # Check if the script is being run as the main program
 if __name__ == "__main__":
