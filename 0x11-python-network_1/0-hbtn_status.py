@@ -1,14 +1,11 @@
 #!/usr/bin/python3
-"""Fetches https://intranet.hbtn.io/status."""
-import urllib.request
+""" Module that fetches https://intranet.hbtn.io/status """
+import urllib.request as request
 
-url = 'https://alx-intranet.hbtn.io/status'
-
-try:
-    with urllib.request.urlopen(url) as response:
-        body = response.read()
-        print("Body response:")
-        print("\t- type:", type(body))
-        print("\t- content:", body.decode('utf-8'))
-except urllib.error.URLError as e:
-    print("Error:", e)
+if __name__ == "__main__":
+    url = "https://intranet.hbtn.io/status"
+    
+    with request.urlopen(url) as response:
+        body = response.read().decode("utf-8")
+    
+    print(f"Body response:\n\t- type: {type(body)}\n\t- content: {body}")
