@@ -11,13 +11,13 @@ import urllib.request
 
 # Check if the script is being run as the main program
 if __name__ == "__main__":
-    # Get the URL as a command-line argument (assuming it's the first argument)
+    # Get the URL as a command-line argument
     url = sys.argv[1]
 
-    # Create a urllib.request.Request object for the specified URL
+    # Create a urllib.request.
     request = urllib.request.Request(url)
 
-    # Send an HTTP GET request to the URL and store the response in 'response'
+    # Send an HTTP GET request and store the response in 'response'
     with urllib.request.urlopen(request) as response:
-        # Extract the "X-Request-Id" header from the response's headers and print it
+        # Extract the "X-Request-Id"
         print(dict(response.headers).get("X-Request-Id"))
