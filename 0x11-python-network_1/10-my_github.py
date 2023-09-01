@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""Utilizes the GitHub API to retrieve a GitHub user ID using the provided credentials.
+"""Utilizes the GitHub API to retrieve a GitHub user ID
+using the provided credentials.
 
 Usage: ./10-my_github.py <GitHub username> <GitHub password>
 
