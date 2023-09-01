@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Initiates a request to the provided URL and exhibits the content of the response body.
+"""Sends a request to a given URL and displays the response body.
 
 Usage: ./7-error_code.py <URL>
   - Handles HTTP errors.
