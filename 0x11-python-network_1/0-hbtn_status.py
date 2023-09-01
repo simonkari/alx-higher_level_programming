@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """ Module designed for retrieving data from 'https://alx-intranet.hbtn.io/status' via HTTPS. """
-import urllib.request
-import urllib.error
+import urllib.request as request
 
 
 if __name__ == "__main__":
