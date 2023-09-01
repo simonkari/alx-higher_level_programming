@@ -16,10 +16,10 @@ if __name__ == "__main__":
     # Initialize an empty string 'letter'
     letter = "" if len(sys.argv) == 1 else sys.argv[1]
 
-    # Create a dictionary 'payload' with a single key "q" and the value of 'letter'
+    # Create a dictionary 'payload' with a single key "q"
     payload = {"q": letter}
 
-    # Send an HTTP POST request to a local server at http://0.0.0.0:5000/search_user
+    # Send an HTTP POST request to a local server
     r = requests.post("http://0.0.0.0:5000/search_user", data=payload)
 
     # Try to parse the response as JSON
@@ -30,7 +30,7 @@ if __name__ == "__main__":
         if response == {}:
             print("No result")
         else:
-            # Print the "id" and "name" fields from the response in a formatted string
+            # Print the "id" and "name" fields from the response
             print("[{}] {}".format(response.get("id"), response.get("name")))
     except ValueError:
         # Handle the case where the response is not valid JSON
