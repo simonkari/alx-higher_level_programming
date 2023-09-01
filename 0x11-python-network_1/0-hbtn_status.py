@@ -1,17 +1,10 @@
 #!/usr/bin/python3
-""" Python script that fetches https://intranet.hbtn.io/status """
-import urllib.request
-import urllib.error
+""" module that fetches https://intranet.hbtn.io/status"""
+import urllib.request as request
+
 
 if __name__ == "__main__":
-    url = 'https://intranet.hbtn.io/status'
-    
-    try:
-        with urllib.request.urlopen(url) as response:
-            html = response.read()
-            print('Body response:')
-            print(f'\t- type: {type(html)}')
-            print(f'\t- content: {html}')
-            print(f'\t- utf8 content: {html.decode("utf-8")}')
-    except urllib.error.URLError as e:
-        print(f"Error: {e}")
+    with request.urlopen("https://intranet.hbtn.io/status") as result:
+        body = result.read()
+        print("Body response:\n\t- type: {}\n\t- content: {}\n\t\
+- utf8 content: {}".format(type(body), body, body.decode("utf-8")))
