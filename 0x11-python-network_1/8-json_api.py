@@ -1,9 +1,10 @@
 #!/usr/bin/python3
-"""Sends a POST request to http://0.0.0.0:5000/search_user with a given letter.
+"""Dispatches a POST request to http://0.0.0.0:5000/search_user, specifying a particular letter.
 
 Usage: ./8-json_api.py <letter>
-  - The letter is sent as the value of the variable `q`.
-  - If no letter is provided, sends `q=""`.
+
+The specified letter is sent as the value for the q variable.
+If no letter is provided, it sends q="" as the query parameter.
 """
 import sys
 import requests
