@@ -1,26 +1,23 @@
 #!/usr/bin/python3
-"""
-Displays the X-Request-Id header variable of a request to a given URL.
+"""Exhibits the X-Request-Id header variable from a
+request made to the specified URL.
 
 Usage: ./1-hbtn_header.py <URL>
 """
+
+# Import the necessary libraries
 import sys
 import urllib.request
-from urllib.error import URLError
 
+# Check if the script is being run as the main program
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Usage: ./1-hbtn_header.py <URL>")
-        sys.exit(1)
-
+    # Get the URL as a command-line argument (assuming it's the first argument)
     url = sys.argv[1]
 
-    try:
-        with urllib.request.urlopen(url) as response:
-            x_request_id = response.headers.get("X-Request-Id")
-            if x_request_id:
-                print(x_request_id)
-            else:
-                print("X-Request-Id header not found in the response.")
-    except URLError as e:
-        print(f"Error: {e}")
+    # Create a urllib.request.Request object for the specified URL
+    request = urllib.request.Request(url)
+
+    # Send an HTTP GET request to the URL and store the response in 'response'
+    with urllib.request.urlopen(request) as response:
+        # Extract the "X-Request-Id" header from the response's headers and print it
+        print(dict(response.headers).get("X-Request-Id"))
