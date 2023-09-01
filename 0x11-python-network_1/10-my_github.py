@@ -4,8 +4,8 @@
 Usage: ./10-my_github.py <GitHub username> <GitHub password>
   - Uses Basic Authentication to access the ID.
 """
-import sys
 import requests
+import sys
 from requests.auth import HTTPBasicAuth
 
 
