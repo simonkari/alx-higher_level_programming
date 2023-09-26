@@ -1,48 +1,33 @@
 #!/usr/bin/node
 const request = require('request');
+const BASE_URL = 'https://swapi-api.hbtn.io/api';
 
-// Function to fetch characters from a Star Wars movie
-function fetchCharacters(movieId) {
-  const apiUrl = `https://swapi.dev/api/films/${movieId}/`;
-
-  request(apiUrl, (error, response, body) => {
-    if (error) {
-      console.error('Error:', error);
+// Check if there is at least one command-line argument
+if (process.argv.length > 2) {
+  // Make an HTTP GET request to retrieve movie information using the provided movie ID
+  request(`${BASE_URL}/films/${process.argv[2]}/`, (err, res, body) => {
+    if (err) {
+      console.error('Error:', err);
       return;
     }
 
-    if (response.statusCode !== 200) {
-      console.error('API Request Failed with Status Code:', response.statusCode);
-      return;
-    }
+    // Parse the JSON response to extract character URLs
+    const charactersURL = JSON.parse(body).characters;
 
-    const movieData = JSON.parse(body);
-    console.log(`Characters in ${movieData.title}:`);
-
-    // Loop through characters and print their names
-    movieData.characters.forEach(characterUrl => {
-      request(characterUrl, (error, response, characterBody) => {
-        if (error) {
-          console.error('Error:', error);
+    // Loop through character URLs and fetch each character's data
+    charactersURL.forEach(characterUrl => {
+      request(characterUrl, (err, res, body) => {
+        if (err) {
+          console.error('Error:', err);
           return;
         }
 
-        if (response.statusCode !== 200) {
-          console.error('API Request Failed with Status Code:', response.statusCode);
-          return;
-        }
-
-        const characterData = JSON.parse(characterBody);
+        // Parse the JSON response to extract and print the character's name
+        const characterData = JSON.parse(body);
         console.log(characterData.name);
       });
     });
   });
-}
-
-// Check if a movie ID is provided as a command-line argument
-if (process.argv.length !== 3) {
-  console.error('Please provide a movie ID as a command-line argument.');
 } else {
-  const movieId = process.argv[2];
-  fetchCharacters(movieId);
+  console.error('Please provide a movie ID as a command-line argument.');
 }
