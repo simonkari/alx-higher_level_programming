@@ -1,25 +1,23 @@
 #!/usr/bin/node
+// Shebang line specifying the interpreter
+
 const request = require('request');
+// Import the 'request' module to make HTTP requests
 
-if (process.argv.length !== 3) {
-  console.error('Usage: node getStarWarsMovieTitle.js <Movie ID>');
-  process.exit(1);
+const BASE_URL = 'https://swapi-api.hbtn.io/api';
+// Define the base URL of the Star Wars API
+
+if (process.argv.length > 2) {
+  // Check if a command-line argument (movie ID) is provided
+
+  request(`${BASE_URL}/films/${process.argv[2]}/`, (err, res, body) => {
+    // Make a GET request to the specified movie endpoint in the Star Wars API
+
+    if (err) {
+      // Handle any errors that may occur during the request
+      console.log(err);
+    }
+    console.log(JSON.parse(body).title);
+    // Parse the JSON response and print the movie title
+  });
 }
-
-const movieId = process.argv[2];
-const apiUrl = `https://swapi-api.alx-tools.com/api/films/${movieId}`;
-
-request(apiUrl, (error, response, body) => {
-  if (error) {
-    console.error('Error:', error.message);
-    process.exit(1);
-  }
-
-  if (response.statusCode !== 200) {
-    console.error('Error:', `Status Code ${response.statusCode}`);
-    process.exit(1);
-  }
-
-  const movieData = JSON.parse(body);
-  console.log(`Title: ${movieData.title}`);
-});
