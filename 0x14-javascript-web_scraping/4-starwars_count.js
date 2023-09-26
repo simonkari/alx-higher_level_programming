@@ -1,28 +1,24 @@
 #!/usr/bin/node
 const request = require('request');
 
-if (process.argv.length !== 3) {
-  console.error('Usage: node countWedgeAntillesMovies.js <API URL>');
-  process.exit(1);
+if (process.argv.length > 2) {
+  // Check if a command-line argument (API URL) is provided
+
+  request(`${process.argv[2]}`, (err, res, body) => {
+    // Make a GET request to the specified API URL
+
+    if (err) {
+      // Handle any errors that may occur during the request
+      console.log(err);
+    } else if (body) {
+      // Check if the response body is not empty
+
+      const charFilms = JSON.parse(body).results.filter(
+        x => x.characters.find(y => y.match(/\/people\/18\/?$/))
+      );
+
+      // Parse the JSON response, filter movies with Wedge Antilles, and count them
+      console.log(charFilms.length);
+    }
+  });
 }
-
-const apiUrl = process.argv[2];
-
-request(apiUrl, (error, response, body) => {
-  if (error) {
-    console.error('Error:', error.message);
-    process.exit(1);
-  }
-
-  if (response.statusCode !== 200) {
-    console.error('Error:', `Status Code ${response.statusCode}`);
-    process.exit(1);
-  }
-
-  const movies = JSON.parse(body).results;
-  const wedgeAntillesMovies = movies.filter(movie =>
-    movie.characters.includes('https://swapi-api.alx-tools.com/api/people/18/')
-  );
-
-  console.log(`Number of movies with Wedge Antilles: ${wedgeAntillesMovies.length}`);
-});
