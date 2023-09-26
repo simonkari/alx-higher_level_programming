@@ -1,18 +1,17 @@
 #!/usr/bin/node
-const fs = require('fs');
+const fs = require('fs').promises;
 
-// Check if the correct number of arguments are provided
-if (process.argv.length !== 3) {
-    console.log('Usage: node read_file.js <file_path>');
-    process.exit(1);
+async function main() {
+  try {
+    const data = await fs.readFile(process.argv[2], 'utf-8');
+    console.log(data);
+  } catch (err) {
+    console.error(err);
+  }
 }
 
-const filePath = process.argv[2];
-
-fs.readFile(filePath, 'utf-8', (err, data) => {
-    if (err) {
-        console.error(`Error: ${err}`);
-    } else {
-        console.log(data);
-    }
-});
+if (process.argv[2]) {
+  main();
+} else {
+  console.error('Usage: node script.js <file-path>');
+}
