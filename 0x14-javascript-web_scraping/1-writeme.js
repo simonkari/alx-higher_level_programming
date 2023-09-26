@@ -1,20 +1,18 @@
 #!/usr/bin/node
+// Shebang line specifying the interpreter
+
 const fs = require('fs');
+// Import the 'fs' module to work with the file system
 
-function writeStringToFile(filePath, content) {
-    fs.writeFile(filePath, content, 'utf-8', (err) => {
-        if (err) {
-            console.error(`An error occurred while writing to ${filePath}: ${err}`);
-        } else {
-            console.log(`Successfully wrote the string to ${filePath}`);
-        }
-    });
-}
+if (process.argv.length > 3) {
+  // Check if both a filename (process.argv[2]) and content (process.argv[3]) are provided
 
-if (process.argv.length !== 4) {
-    console.log('Usage: node script.js <file_path> <string_to_write>');
-} else {
-    const filePath = process.argv[2];
-    const content = process.argv[3];
-    writeStringToFile(filePath, content);
+  fs.writeFile(process.argv[2], process.argv[3], err => {
+    // Write the content (process.argv[3]) to the file specified by the filename (process.argv[2])
+
+    if (err) {
+      // Handle any errors that may occur during file writing
+      console.log(err);
+    }
+  });
 }
