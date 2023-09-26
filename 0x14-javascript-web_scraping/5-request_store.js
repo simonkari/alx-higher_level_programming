@@ -11,7 +11,7 @@ if (process.argv.length > 3) {
   request
     .get(`${process.argv[2]}`)
     // Pipe the response of the HTTP request to create a writable
-    //stream that writes the data to a file specified as the second 
+    //stream that writes the data to a file specified as the second
     //command line argument (process.argv[3])
     .pipe(fs.createWriteStream(process.argv[3]));
 }
