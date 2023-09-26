@@ -1,41 +1,35 @@
 #!/usr/bin/node
+
+// Import the 'request' module
 const request = require('request');
 
-// API URL
-const apiUrl = 'https://jsonplaceholder.typicode.com/todos';
+// Check if there is at least one command line argument
+if (process.argv.length > 2) {
+  // Make an HTTP GET request to the URL specified as the first command line argument (process.argv[2])
+  request(process.argv[2], (err, res, body) => {
+    // Create an object to store the aggregate count of completed tasks by user ID
+    const aggregate = {};
 
-// Make a GET request to the API
-request(apiUrl, (error, response, body) => {
-  if (error) {
-    console.error('Error:', error);
-    return;
-  }
-
-  if (response.statusCode !== 200) {
-    console.error('API Request Failed with Status Code:', response.statusCode);
-    return;
-  }
-
-  // Parse the JSON response
-  const todos = JSON.parse(body);
-
-  // Create an object to store the count of completed tasks by user ID
-  const completedTasksByUserId = {};
-
-  // Loop through the todos to count completed tasks
-  todos.forEach((todo) => {
-    if (todo.completed) {
-      const userId = todo.userId;
-      if (completedTasksByUserId[userId]) {
-        completedTasksByUserId[userId]++;
-      } else {
-        completedTasksByUserId[userId] = 1;
-      }
+    // Check for errors during the HTTP request
+    if (err) {
+      console.error(err);
+      return;
     }
-  });
 
-  // Print users with completed tasks
-  for (const userId in completedTasksByUserId) {
-    console.log(`User ID ${userId}: ${completedTasksByUserId[userId]} completed tasks`);
-  }
-});
+    // Parse the JSON response from the API and iterate through its elements
+    JSON.parse(body).forEach(element => {
+      // Check if the task is completed
+      if (element.completed) {
+        // Initialize the count for the user if it doesn't exist
+        if (!aggregate[element.userId]) {
+          aggregate[element.userId] = 0;
+        }
+        // Increment the count of completed tasks for the user
+        aggregate[element.userId]++;
+      }
+    });
+
+    // Print the aggregate count of completed tasks by user ID
+    console.log(aggregate);
+  });
+}
